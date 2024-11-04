@@ -1,7 +1,7 @@
 FROM fedora:latest
 
 # Update the package index and install necessary packages
-RUN dnf update && dnf install -y ruby rubygems ruby-devel gcc gcc-c++ rpm-build systemctl nginx
+RUN dnf update --refresh -y && dnf install -y ruby rubygems ruby-devel gcc gcc-c++ rpm-build
 
 # Set the working directory to /app
 WORKDIR /app
