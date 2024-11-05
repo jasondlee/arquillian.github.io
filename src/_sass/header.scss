@@ -1,12 +1,12 @@
 .navbar {
-    background-image: linear-gradient(to bottom, #41245a, #381f4d);
+    background-image: linear-gradient(to bottom, $palette_dark_purple, $palette_pitch_purple);
     background-repeat: repeat-x;
 }
 
 a.navbar-brand {
     font-weight: 200;
-    color: #e6e6e6;
-    text-shadow: 0 1px 0 #41245a;
+    color: $palette_10gray;
+    text-shadow: 0 1px 0 $palette_dark_purple;
     text-transform: lowercase;
     font-size: 2.2em;
     line-height: 1em;
@@ -14,12 +14,16 @@ a.navbar-brand {
 
 .nav-link {
     font-size: 1.5em;
-    color: #e6e6e6;
+    color: $palette_10gray;
     text-decoration: none;
 }
 
 a.nav-link:hover {
     color: $banner_link_hover_color;
+}
+
+a.navbar-brand:hover {
+    color: $palette_10gray;
 }
 
 .navbar {

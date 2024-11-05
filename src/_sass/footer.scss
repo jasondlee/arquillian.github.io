@@ -1,7 +1,7 @@
 footer {
     box-shadow: inset 0 12px 20px -10px rgba(0, 0, 0, 0.5);
-    background-color: #a9de7c;
-    color: #4d4d4d;
+    background-color: $footer_base_color;
+    color: $palette_70gray;
 }
 
 footer .container {
@@ -16,7 +16,7 @@ footer .container .project p {
     margin-top: 30px;
 }
 
-.footer-nav ul {
+.footer-nav ul, .follow-us ul {
     margin-left: 0;
     list-style: none;
 }
@@ -51,7 +51,7 @@ footer .container .footer-nav ul {
 }
 
 footer .container a {
-    color: #333333;
+    color: $palette_80gray;
     text-decoration: none;
 }
 
