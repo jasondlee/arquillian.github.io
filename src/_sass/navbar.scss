@@ -1,0 +1,41 @@
+$palette_lime: rgba(164, 255, 92, 1); // nav text color
+$banner_link_hover_color: $palette_lime;
+
+.navbar {
+    background-image: linear-gradient(to bottom, #41245a, #381f4d);
+    background-repeat: repeat-x;
+}
+
+a.navbar-brand {
+    font-weight: 200;
+    color: #e6e6e6;
+    text-shadow: 0 1px 0 #41245a;
+    text-transform: lowercase;
+    font-size: 2.2em;
+    line-height: 1em;
+}
+
+.nav-link {
+    font-size: 1.5em;
+    color: #e6e6e6;
+    text-decoration: none;
+}
+
+a.nav-link:hover {
+    color: $banner_link_hover_color;
+}
+
+.navbar {
+    font-family: "Marvel", "Trebuchet MS", Arial, sans-serif;
+}
+
+.navbar .container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 46px;
+    height: 46px;
+    background-image: url("/images/arquillian-icon-s.png");
+}
