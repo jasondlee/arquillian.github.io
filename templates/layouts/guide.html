@@ -35,9 +35,9 @@
                     {/if}
                     {#if page.data.language??}<strong style="padding-left: 10px;">Language:</strong> {=page.data.language}{/if}
                     <br>
-                    {#if page.data.guide_group == 1}<strong>Level:</strong> First Steps{/if}
-                    {#if page.data.guide_group == 2}<strong>Level:</strong> More Coverage{/if}
-                    {#if page.data.guide_group == 3}<strong>Level:</strong> Enhance{/if}
+                    {#if page.data.guide_group?? && page.data.guide_group == 1}<strong>Level:</strong> First Steps{/if}
+                    {#if page.data.guide_group?? && page.data.guide_group == 2}<strong>Level:</strong> More Coverage{/if}
+                    {#if page.data.guide_group?? && page.data.guide_group == 3}<strong>Level:</strong> Enhance{/if}
                     {#if page.data.tags??}<strong style="padding-left: 10px;">Tags:</strong> {#for tag in page.data.tags}{=tag}{#if tag_hasNext}, {/if}{/for}{/if}
                     {#if page.data.last_updated??}<strong style="padding-left: 10px;">Last Update:</strong> {=page.data.last_updated}{/if}
                 </div>

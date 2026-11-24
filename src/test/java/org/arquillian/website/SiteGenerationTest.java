@@ -149,7 +149,7 @@ class SiteGenerationTest {
         assertTrue(body.contains("class=\"greenbar\""));
         assertTrue(body.contains("class=\"admonitionblock important\""));
         assertTrue(body.contains("<h2>Getting Started</h2>"));
-        assertTrue(body.contains("Authors:</strong> Dan Allen"));
+        assertTrue(body.contains("<a href=\"/community/mojavelinux\">Dan Allen</a>"));
         assertTrue(body.contains("Translations:</strong>"));
         assertTrue(body.contains("Level:</strong> First Steps"));
         assertTrue(body.contains("Tags:</strong> cdi, weld, maven, forge, eclipse"));
