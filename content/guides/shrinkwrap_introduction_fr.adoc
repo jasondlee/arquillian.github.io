@@ -78,11 +78,11 @@ Avec Maven, ces derniers peuvent être configurés facilement dans les bons scop
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -106,11 +106,11 @@ ShrinkWrap s'exécute sur une plateforme Java5 ou supérieure, mais nécessite a
 
 ==== Documentation de l'API
 
-La JavaDoc de chaque version se trouve «ici» : http://docs.jboss.org/shrinkwrap .
+La JavaDoc de chaque version se trouve «ici» : https://docs.jboss.org/shrinkwrap .
 
 ==== Développement Open Source
 
-Forkez nous et participez au «développement» : http://github.com/shrinkwrap/shrinkwrap .
+Forkez nous et participez au «développement» : https://github.com/shrinkwrap/shrinkwrap .
 
 === Création d'archive
 

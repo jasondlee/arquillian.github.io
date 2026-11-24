@@ -362,7 +362,7 @@ Adapter zdalny dla GlassFisha wykorzystuje bibliotekę Jersey do komunikacji z k
 
 Jak już dodasz nowe profile do swojego pliku pom.xml, kliknij prawym przyciskiem na projekcie w Eclipse i wybierze Maven > Update Project Configuration. Jeżeli na projekcie zostały oznaczone błędy kompilacji musisz aktywować jeden z przygotowanych profili.
 
-Pamiętaj, że masz dwie możliwości wyboru profili Mavena w Eclipse (zakładając że wykorzystuje link:http://www.eclipse.org/m2e):[Maven Integration for Eclipse]
+Pamiętaj, że masz dwie możliwości wyboru profili Mavena w Eclipse (zakładając że wykorzystuje https://www.eclipse.org/m2e):[Maven Integration for Eclipse]
 
 # Ręczna konfiguracja (standardowe podejście)
 # Maven profile selector (JBoss Tools)
@@ -375,7 +375,7 @@ Adaptery zdalnych kontenerów zakładają, że te są uruchomione. W związku z 
 
 Najprostszym sposobem na zarządzanie zdalnymi kontenerami jest skonfigurowanie ich w swoim IDE. Jeżeli wolisz korzystać z konsoli, możesz pominąć ten krok i wystartować serwery odpowiednimi skryptami startującymi.
 
-Pokażemy jak dodać serwer (kontener) w Eclipse. Proces dla innych IDE jest podobny. Będziesz potrzebował zarówno link:http://jboss.org/tools[JBoss Tools] jak i link:http://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics,[GlassFish Java EE Application Server Plugin] oba dostępne w Eclipse MarketPlace.
+Pokażemy jak dodać serwer (kontener) w Eclipse. Proces dla innych IDE jest podobny. Będziesz potrzebował zarówno https://jboss.org/tools[JBoss Tools] jak i https://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics,[GlassFish Java EE Application Server Plugin] oba dostępne w Eclipse MarketPlace.
 
 W Eclipse, wybierz Window > Show View > Servers z paska menu. Gdy widok już się otworzy, kliknij prawym przyciskiem i wybierz New > Server. Utwórz server dla JBoss AS 7.1:
 
@@ -421,7 +421,7 @@ Gdy kontener jest już uruchomiony, uaktywnij profil `arquillian-jbossas-remote`
 
 image::/images/guides/arquillian_tutorial_2_jbossas_profile_selection.png[]
 
-Na koniec kliknij prawym przyciskiem na klasę `BasketTest` i wybierz Run As > JUnit Test. Powinieneś zauważyć sporą aktywność w oknie Console i później... *(greenbar)zielony pasek* w oknie testów JUnita!
+Na koniec kliknij prawym przyciskiem na klasę `BasketTest` i wybierz Run As > JUnit Test. Powinieneś zauważyć sporą aktywność w oknie Console i później... [.greenbar]*zielony pasek* w oknie testów JUnita!
 
 Testy możesz również uruchomić z linii poleceń, używając Mavena:
 
@@ -440,7 +440,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.844 sec
 ----
-*Gratulacje!* Zdobyłeś swój pierwszy *(greenbar)zielony pasek* testując Arquillianem na zdalnym kontenerze!
+*Gratulacje!* Zdobyłeś swój pierwszy [.greenbar]*zielony pasek* testując Arquillianem na zdalnym kontenerze!
 
 [NOTE]
 ====
@@ -459,7 +459,7 @@ Gdy wszystko już jest gotowe, aktywuj profil Mavena `arquillian-glassfish-remot
 
 image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
-Na koniec, kliknij prawym przyciskiem na klasę `BasketTest` i wybierz Run As > JUnit Test. Powinieneś dostrzec dużą aktywność w oknie Console i później... *(greenbar)zielony pasek* w oknie testów JUnita!
+Na koniec, kliknij prawym przyciskiem na klasę `BasketTest` i wybierz Run As > JUnit Test. Powinieneś dostrzec dużą aktywność w oknie Console i później... [.greenbar]*zielony pasek* w oknie testów JUnita!
 
 Testy możesz również uruchomić z linii poleceń, używając Mavena:
 
@@ -478,7 +478,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.549 sec
 ----
-*Gratulacje!* Zdobyłeś kolejny *(greenbar)zielony pasek*.
+*Gratulacje!* Zdobyłeś kolejny [.greenbar]*zielony pasek*.
 
 Nadal powinieneś mieć możliwość uruchomienia test w osadzonym środowisku Embedded GlassFish używając profilu z poprzedniego przewodnika. Sprawdź to. Powinieneś również móc bez przeszkód debugować swój test.
 
@@ -556,11 +556,11 @@ Oto konfiguracja którą należy dodać do konfiguracji Arquilliana w pliku arqu
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -604,11 +604,11 @@ Czasami potrzebujesz nieco dokładniejszego wglądu w to co Arquillian instaluje
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <engine>
         <property name="deploymentExportPath">target/deployments</property>
     </engine>

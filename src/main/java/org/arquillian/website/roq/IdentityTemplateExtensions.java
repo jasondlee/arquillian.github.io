@@ -22,4 +22,12 @@ public final class IdentityTemplateExtensions {
             throw new IllegalStateException("Unable to load static identity data", exception);
         }
     }
+
+    /** Finds an identity by the stable front-matter key used by authored pages. */
+    public static Identity find(String githubId) {
+        return contributors().stream()
+                .filter(identity -> identity.githubId().equals(githubId))
+                .findFirst()
+                .orElse(null);
+    }
 }

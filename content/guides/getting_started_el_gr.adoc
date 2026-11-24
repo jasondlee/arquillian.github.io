@@ -20,14 +20,14 @@ language: el_gr
 
 === Παραδοχές
 
-Ο απλούστερος τρόπος να ξεκινήσεις με το Arquillian είναι να το ενσωματώσεις στην test suite ενός project το οποίο γίνεται build με κάποιο εργαλείο που προσφέρει dependency management. Σήμερα το πιο ευρέως χρησιμοποιούμενο build tool σε αυτή την κατηγορία ειναι το link:http://maven.apache.org.[Apache Maven] Ο οδηγός αυτός θα σε καθοδηγήσει ώστε να αποκτήσεις την πρώτη σου *(greenbar)green bar* χρησιμοποιώντας ένα νέο Maven project.
+Ο απλούστερος τρόπος να ξεκινήσεις με το Arquillian είναι να το ενσωματώσεις στην test suite ενός project το οποίο γίνεται build με κάποιο εργαλείο που προσφέρει dependency management. Σήμερα το πιο ευρέως χρησιμοποιούμενο build tool σε αυτή την κατηγορία ειναι το https://maven.apache.org.[Apache Maven] Ο οδηγός αυτός θα σε καθοδηγήσει ώστε να αποκτήσεις την πρώτη σου [.greenbar]*green bar* χρησιμοποιώντας ένα νέο Maven project.
 
 [NOTE]
 ====
 Το Arquillian δεν εξαρτάται από το Maven ή κάποιο συγκεκριμένο build tool. Δουλεύει εξίσου καλά --αν όχι καλύτερα-- όταν χρησιμοποιείται σε ένα project με Ant ή Gradle build. Ιδανικά, το build tool θα πρέπει να προσφέρει dependency management καθώς αυτό απλουστεύει την εισαγωγή των Arquillian libraries τα οποία διατίθενται από το "Maven Central repository":maven_search, στο project.
 ====
 
-Ο οδηγός αυτός υποθέτει ότι έχεις διαθέσιμο το Maven, είτε σε command shell είτε σε κάποιο IDE(Integrated Development Environment). Σε διαφορετική περίπτωση link:http://maven.apache.org/download.html.[κατέβασε και εγκατέστησε το Maven] Επίσης θα χρειαστείς το link:http://www.oracle.com/technetwork/java/javase/downloads[JDK (Java Development Kit) 1.5] ή μεγαλύτερης έκδοσης εγκατεστημένο στο μηχάνημά σου, κατά προτίμηση την έκδοση JDK 1.6.
+Ο οδηγός αυτός υποθέτει ότι έχεις διαθέσιμο το Maven, είτε σε command shell είτε σε κάποιο IDE(Integrated Development Environment). Σε διαφορετική περίπτωση https://maven.apache.org/download.html.[κατέβασε και εγκατέστησε το Maven] Επίσης θα χρειαστείς το https://www.oracle.com/technetwork/java/javase/downloads[JDK (Java Development Kit) 1.5] ή μεγαλύτερης έκδοσης εγκατεστημένο στο μηχάνημά σου, κατά προτίμηση την έκδοση JDK 1.6.
 
 === Δημιουργία Νέου Project
 
@@ -36,7 +36,7 @@ language: el_gr
 # link:#generate_project_from_archetype[Δημιουργία ενός Project από ένα Maven archetype]
 # link:#create_project_using_forge[Δημιουργία και τροποποίηση ενός Project με τη χρήση του JBoss Forge]
 
-Ο δεύτερος τρόπος με την χρήση link:http://jboss.org/forge[JBoss Forge] είναι απλούστερος, αλλά θα παραθέσουμε και τους δυο τρόπους για την περίπτωση που δεν είσαι έτοιμος να υιοθετήσεις τη χρήση του JBoss Forge. Επέλεξε έναν από τους δυο παραπάνω τρόπους και ανάτρεξε στις αντίστοιχες οδηγίες.
+Ο δεύτερος τρόπος με την χρήση https://jboss.org/forge[JBoss Forge] είναι απλούστερος, αλλά θα παραθέσουμε και τους δυο τρόπους για την περίπτωση που δεν είσαι έτοιμος να υιοθετήσεις τη χρήση του JBoss Forge. Επέλεξε έναν από τους δυο παραπάνω τρόπους και ανάτρεξε στις αντίστοιχες οδηγίες.
 
 [NOTE]
 ====
@@ -70,7 +70,7 @@ Y: : <ENTER>
 ----
 Η εντολή αυτή δημιούργησε ένα Maven-based Java project μέσα στο υπάρχον directory, σε έναν νέο φάκελο με την ονομασία `arquillian-tutorial`. Μετακινήσου σε αυτό το φάκελο. Παρακάτω απεικονίζεται η δομή του project.
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - Τοποθέτησε όλα τα Java source αρχεία της εφαρμογής εδώ (κάτω από το Java package)
 *** resources/ - Τοποθέτησε όλα τα configuration αρχεία της εφαρμογής εδώ
@@ -100,11 +100,11 @@ Y: : <ENTER>
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://maven.apache.org/POM/4.0.0
-        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        https://maven.apache.org/POM/4.0.0
+        https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 ----
     <groupId>org.arquillian.example</groupId>
@@ -113,7 +113,7 @@ Y: : <ENTER>
     <packaging>jar</packaging>
 
     <name>arquillian-tutorial</name>
-    <url>http://arquillian.org</url>
+    <url>https://arquillian.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -172,11 +172,11 @@ Y: : <ENTER>
 [#create_project_using_forge]
 ==== Δημιουργία Project με τη χρήση Forge
 
-To link:http://jboss.org/forge[JBoss Forge] είναι ένα command shell για ταχύτερο προγραμματισμό εφαρμογών σε ένα πρότυπο περιβάλλον.
+To https://jboss.org/forge[JBoss Forge] είναι ένα command shell για ταχύτερο προγραμματισμό εφαρμογών σε ένα πρότυπο περιβάλλον.
 
 Η εγκατάσταση του Forge είναι μια σχετικά σύντομη διαδικασία και ο οδηγός αυτός θα καλύψει τα θεμελιώδη κομμάτια της. Ακολούθησε τα παρακάτω βήματα για να εγκατστήσεις το Forge:
 
-# link:http://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Download Forge]
+# https://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Download Forge]
 # Αποσυμπίεσε τα περιεχόμενα του αρχείου σε έναν φάκελο, το μονοπάτι του οποίου θα αποκαλούμε στο εξής ως `$FORGE_HOME`
   Υποθέτουμε ότι αποσυμπίεσες τα περιεχόμενα του αρχείου σε έναν φάκελο με όνομα `forge` μέσα στο home directory
 # Πρόσθεσε το `$FORGE_HOME/bin` στην path environment variable (Windows, Linux or Mac OSX)
@@ -219,7 +219,7 @@ $ project-new --named arquillian-tutorial --topLevelPackage org.arquillian.examp
 
 Παρακάτω απεικονίζεται η δομή του project που δημιουργεί το Forge:
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - Τοποθέτησε όλα τα Java source αρχεία της εφραμογής εδώ (κάτω από το Java package)
 *** resources/ - Τοποθέτησε όλα τα configuration αρχεία της εφαρμογης εδώ
@@ -253,7 +253,7 @@ $ project-add-dependencies junit:junit:4.12:test
 
 [source,command]
 ----
-$ project-remove-repository --url http://repository.jboss.org/nexus/content/groups/public
+$ project-remove-repository --url https://repository.jboss.org/nexus/content/groups/public
 ----
 Παρακάτω απεικονίζεται το pom.xml που δημιουργεί το Forge:
 
@@ -262,8 +262,8 @@ $ project-remove-repository --url http://repository.jboss.org/nexus/content/grou
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.arquillian.tutorial</groupId>
     <artifactId>arquillian-tutorial</artifactId>
@@ -324,11 +324,11 @@ $ project-remove-repository --url http://repository.jboss.org/nexus/content/grou
 
 Όταν προγραμματίζεις ένα Java project, συνήθως θα χρησιμοποιήσεις ένα IDE όπως το Eclipse. Για αυτό το λόγο το Arquillian σχεδιάστηκε έτσι ώστε να είναι IDE friendly. Μπορείς να εκτελέσεις τα Arquillian tests από το IDE χωρίς ειδικές ρυθμίσεις. Ας προχωρήσουμε όμως στα βήματα που απαιτούνται για το άνοιγμα του project στο Eclipse.
 
-Αρχικά, άνοιξε το Eclipse. Επειδή αυτό είναι ένα Maven project, θα χρειαστεί να εγκαταστήσεις το link:http://eclipse.org/m2e[Maven Integration for Eclipse] (m2e) plugin ώστε να ανοίξεις το project.
+Αρχικά, άνοιξε το Eclipse. Επειδή αυτό είναι ένα Maven project, θα χρειαστεί να εγκαταστήσεις το https://eclipse.org/m2e[Maven Integration for Eclipse] (m2e) plugin ώστε να ανοίξεις το project.
 
 ==== Εγκατάσταση του m2e plugin
 
-Στην περίπτωση που δεν έχεις ήδη εγκατεστημένο το m2e plugin, ο απλούστερος τρόπος να το κάνεις είναι να εγκαταστήσεις τα link:http://jboss.org/tools.[JBoss Tools] Ακολούθησε τις παρακάτω οδηγίες ώστε να τα εγκαταστήσεις από το Eclipse Marketplace(κάτι σαν το app store του Eclipse).
+Στην περίπτωση που δεν έχεις ήδη εγκατεστημένο το m2e plugin, ο απλούστερος τρόπος να το κάνεις είναι να εγκαταστήσεις τα https://jboss.org/tools.[JBoss Tools] Ακολούθησε τις παρακάτω οδηγίες ώστε να τα εγκαταστήσεις από το Eclipse Marketplace(κάτι σαν το app store του Eclipse).
 
 # Επέλεξε `Help > Eclipse Marketplace...` από το κεντρικό μενού
 # Πληκτρολόγησε "jboss tools" (χωρίς quotes) στο Find πεδίο και πάτα Enter
@@ -435,7 +435,7 @@ public class Greeter {
 Για να χρησιμοποιήσεις το TestNG αντί για το JUnit testing framework, αντικατέστησε το Arquillian JUnit integration artifact με το Arquillian TestNG integration.
 ====
 
-(Προαιρετικό) Συνιστούμε το upgrade της version του Maven Surefire Plugin για λόγους που περιγράφονται στις link:https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild.[Συχνές Ερωτήσεις] Μπορείς να ρυθμίσεις την version του Surefire Plugin προσθέτοντας το `<plugin>` element μέσα στο `<plugins>` element, ακριβώς κάτω από το Maven Compiler Plugin:
+(Προαιρετικό) Συνιστούμε το upgrade της version του Maven Surefire Plugin για λόγους που περιγράφονται στις https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild.[Συχνές Ερωτήσεις] Μπορείς να ρυθμίσεις την version του Surefire Plugin προσθέτοντας το `<plugin>` element μέσα στο `<plugins>` element, ακριβώς κάτω από το Maven Compiler Plugin:
 
 [source]
 ----
@@ -448,7 +448,7 @@ public class Greeter {
 </plugin>
 <!-- clip -->
 ----
-Αν αντιμετωπίζεις δυσκολίες με το pom.xml up, μπορείς να κατεβάσεις το αρχείο link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] από το link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[example project] και να το μετονομάσεις σε pom.xml.
+Αν αντιμετωπίζεις δυσκολίες με το pom.xml up, μπορείς να κατεβάσεις το αρχείο https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] από το https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[example project] και να το μετονομάσεις σε pom.xml.
 
 *Είσαι έτοιμος να γράψεις το πρώτο σου Arquillian test!*
 
@@ -494,7 +494,7 @@ public class GreeterTest {
 
 ==== Τι είναι ένα test archive?
 
-Ο σκοπός του test archive είναι να απομονώσει τις classes και τα resources τα οποία απαιτούνται για την εκτέλεση του test από το υπολειπόμενο classpath. Σε αντίθεση με ένα κανονικό unit test, το Arquillian δεν χρησιμοποιεί ολόκληρο το classpath. Αντίθετα, έχεις την δυνατότητα να συμπεριλάβεις μόνο ότι χρειάζεται το test σου (το οποίο φυσικά μπορεί να είναι και οπόκληρο το classpath). Το archive ορίζεται χρησιμοποιώντας το link:http://jboss.org/shrinkwrap,[ShrinkWrap] το οοίο είναι ένα Java API για τη δημιουργία archives (e.g., jar, war, ear) στην Java. Η micro-deployment στρατηγική, σου επιτρέπει να επικεντρωθείς αποκλειστικά στις classes που θέλεις να τεστάρεις. Αυτό έχει σαν αποτέλεσμα το test να παραμένει "καθαρό" και διαχειρίσιμο.
+Ο σκοπός του test archive είναι να απομονώσει τις classes και τα resources τα οποία απαιτούνται για την εκτέλεση του test από το υπολειπόμενο classpath. Σε αντίθεση με ένα κανονικό unit test, το Arquillian δεν χρησιμοποιεί ολόκληρο το classpath. Αντίθετα, έχεις την δυνατότητα να συμπεριλάβεις μόνο ότι χρειάζεται το test σου (το οποίο φυσικά μπορεί να είναι και οπόκληρο το classpath). Το archive ορίζεται χρησιμοποιώντας το https://jboss.org/shrinkwrap,[ShrinkWrap] το οοίο είναι ένα Java API για τη δημιουργία archives (e.g., jar, war, ear) στην Java. Η micro-deployment στρατηγική, σου επιτρέπει να επικεντρωθείς αποκλειστικά στις classes που θέλεις να τεστάρεις. Αυτό έχει σαν αποτέλεσμα το test να παραμένει "καθαρό" και διαχειρίσιμο.
 
 Μόλις το ShrinkWrap archive γίνει deployed στον server, μετατρέπεται σε ένα πραγματικό archive. Ο container deployer δεν γνωρίζει ότι το archive δημιουργήθηκε με τη χρήση του ShrinkWrap. Φαντάσου το ShrinkWrap σαν ένα Java-based build tool, με μια διαφορά. Στην βέλτιση περίπτωση, το archive γίνεται streamed στον server αντί να γραφτεί στον δίσκο.
 
@@ -688,7 +688,7 @@ image::/images/guides/arquillian_tutorial_run_junit_test.png[]
 21 [main] INFO org.jboss.weld.Version - WELD-000900 2.3.5 (Final)
 Hello, Earthling!
 ----
-Στη συνέχεια θα πρέπει να εμφανιστεί η *(greenbar)green bar* όπως εμφανίζεται όταν εκτελούμε ένα Junit test!
+Στη συνέχεια θα πρέπει να εμφανιστεί η [.greenbar]*green bar* όπως εμφανίζεται όταν εκτελούμε ένα Junit test!
 
 image::/images/guides/arquillian_tutorial_junit_green_bar.png[]
 
@@ -710,7 +710,7 @@ Running org.arquillian.example.GreeterTest
 Hello, Earthling!
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.907 sec
 ----
-*Συγχαρητήρια!* Μόλις κέρδισες την πρώτη σου *(greenbar)green bar* με την χρήση του Arquillian!
+*Συγχαρητήρια!* Μόλις κέρδισες την πρώτη σου [.greenbar]*green bar* με την χρήση του Arquillian!
 
 === Με μια πιο προσεκτική ματιά
 
@@ -786,7 +786,7 @@ public class Greeter {
 ----
 .addClasses(Greeter.class, PhraseBuilder.class)
 ----
-Εκτέλεσε το test. Μόλις κέρδισες άλλη μια *(greenbar)green bar*!
+Εκτέλεσε το test. Μόλις κέρδισες άλλη μια [.greenbar]*green bar*!
 
 === Κάνοντας debug το Test
 
@@ -917,7 +917,7 @@ p(important). %Προσοχή! Μπορείς να έχεις μόνο έναν 
 Μετακινήσαμε το Java EE API dependency μέσα στο profile επειδή κάποιοι containers, όπως ο Embedded GlassFish, παρέχουν ήδη αυτά τα libraries. Το να τα έχουμε και τα δυο διαθέσιμα στο classpath την ίδια χρονική στιγμή,  μπορεί να οδηγήσει σε conflicts.
 ====
 
-Στη συνέχεια θα προσθέσουμε δυο ακόμη profiles στο `pom.xml` μέσα στο `<profiles>` element. Το πρώτο θα αφορά τον link:http://embedded-glassfish.java.net:[Embedded GlassFish]
+Στη συνέχεια θα προσθέσουμε δυο ακόμη profiles στο `pom.xml` μέσα στο `<profiles>` element. Το πρώτο θα αφορά τον https://embedded-glassfish.java.net:[Embedded GlassFish]
 
 [source]
 ----
@@ -982,13 +982,13 @@ p(important). %Προσοχή! Μπορείς να έχεις μόνο έναν 
 
 Τώρα μπορείς να εκτέλεσεις τα tests σε έναν από τους τρεις containers.
 
-Εαν αντιμετωπίζεις πρόβλημα με το pom.xml, μπορείς να κατεβάσεις το ακόλουθο link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] από το link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial.[example project]
+Εαν αντιμετωπίζεις πρόβλημα με το pom.xml, μπορείς να κατεβάσεις το ακόλουθο https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] από το https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial.[example project]
 
 === Test Across Containers
 
 Όταν κάνεις refresh το project στο Eclipse, θα παρατηρήσεις ότι δεν κάνει πλέον build. Αυτό συμβαίνει επειδή δεν έχεις ενεργοποιήσει ένα από τα container profiles. Ας ενεργοποιήσουμε το Weld EE embedded profile.
 
-Υπάρχουν δυο τρόποι να ενεργοποιήσουμε ένα Maven profile στο Eclipse (υποθέτουμε ότι χρησιμοποιείς το link:http://www.eclipse.org/m2e):[Maven Integration plugin για Eclipse]
+Υπάρχουν δυο τρόποι να ενεργοποιήσουμε ένα Maven profile στο Eclipse (υποθέτουμε ότι χρησιμοποιείς το https://www.eclipse.org/m2e):[Maven Integration plugin για Eclipse]
 
 # Χειροκίνητη ρύθμιση (είναι η καθιερωμένη προσέγγιση)
 # Maven profile selector (JBoss Tools)
@@ -1050,7 +1050,7 @@ image::/images/guides/arquillian_tutorial_maven_profile_selector.png[]
 Στην περίπτωση που όρισες το Weld EE Embedded profile ως ενεργό από προεπιλογή, πρέπει να το απενεργοποιήσεις ώστε να χρησιμοποιήσεις ένα άλλο profile. Μπορείς να απανεργοποιήσεις ένα profile στον Maven Profile selector κάνοντας δεξί κλικ στην αντίστοιχη εγγραφή και επιλέγοντας Deactivate από το μενού. Θα παρατηρήσεις ότι αυτό προσθέτει ένα θαυμαστικό μπροστά από το profile (@!arquillian-weld-ee-embedded@). Πολλαπλές επιλογές profile (ή απενεργοποιήσεις) διαχωρίζονται μεταξύ τους με κόμμα.
 ====
 
-Δοκίμασε να εκτελέσεις το test ξανά. Θα δεις την εκκίνηση του GlassFish στην console...και άλλη μια *(greenbar)green bar* να εμφανίζεται!
+Δοκίμασε να εκτελέσεις το test ξανά. Θα δεις την εκκίνηση του GlassFish στην console...και άλλη μια [.greenbar]*green bar* να εμφανίζεται!
 
 Μέχρι στιγμής έχεις εκτελέσει το ίδιο test σε δυο διαφορετικούς embedded containers, έναν CDI container (Weld) και έναν Java EE container (GlassFish). Ας επιβεβαιώσουμε ότι το component δουλεύει σε έναν standalone container. θα χρησιμοποιήσουμε τον JBoss AS.
 
@@ -1061,11 +1061,11 @@ image::/images/guides/arquillian_tutorial_maven_profile_selector.png[]
 
 Ακολούθησε τα παρακάτω βήματα ώστε να σετάρεις τον JBoss AS 7 έξω από το project:
 
-# link:http://jboss.org/jbossas/downloads[Download JBoss AS 7] (βεβαιώσου ότι η έκδοση του JBoss AS που κάνεις download ταιριάζει με την version στο `jboss-as-arquillian-container-managed` dependency μέσα στο `pom.xml`)
+# https://jboss.org/jbossas/downloads[Download JBoss AS 7] (βεβαιώσου ότι η έκδοση του JBoss AS που κάνεις download ταιριάζει με την version στο `jboss-as-arquillian-container-managed` dependency μέσα στο `pom.xml`)
 # Κάνε extract το archive
 # (προαιρετικά) Θέσε την `JBOSS_HOME` environment μεταβλητή ώστε να έχει τιμή το path του extracted φακέλου
 
-Εαν έχεις ήδη τον JBoss AS εγκατεστημένο (δηλ extracted) και η `JBOSS_HOME` environment μεταβλήτή είναι ορισμένη, τότε μπορείς να ενεργοποιήσεις το `arquillian-jbossas-managed` profile και να εκτελέσεις το test. Θα πρέπει να δεις την εκκίνηση του JBoss AS στην console...και άλλη μια *(greenbar)green bar*!
+Εαν έχεις ήδη τον JBoss AS εγκατεστημένο (δηλ extracted) και η `JBOSS_HOME` environment μεταβλήτή είναι ορισμένη, τότε μπορείς να ενεργοποιήσεις το `arquillian-jbossas-managed` profile και να εκτελέσεις το test. Θα πρέπει να δεις την εκκίνηση του JBoss AS στην console...και άλλη μια [.greenbar]*green bar*!
 
 [NOTE]
 ====
@@ -1115,11 +1115,11 @@ image::/images/guides/arquillian_tutorial_maven_profile_selector.png[]
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -1127,7 +1127,7 @@ image::/images/guides/arquillian_tutorial_maven_profile_selector.png[]
     </container>
 </arquillian>
 ----
-Τώρα κάνε το `arquillian-jbossas-managed` Maven profile να είναι ενεργό και εκτέλεσε ξανά το test. Θα δεις την εκκίνηση του JBoss AS στην console...και άλλη μια *(greenbar)green bar*!
+Τώρα κάνε το `arquillian-jbossas-managed` Maven profile να είναι ενεργό και εκτέλεσε ξανά το test. Θα δεις την εκκίνηση του JBoss AS στην console...και άλλη μια [.greenbar]*green bar*!
 
 Ουσιαστικά είναι το _ίδιο_ test, αυτή τη φορά εκτελέσιμο σε έναν full Java EE container. Το Arquillian πακετάρει το test, το κάνει deploy στον container σαν ένα Java EE archive, εκτελεί τα tests remotely, συλλέγει τα αποτελέσματα και τροφοδοτεί την οθόνη αποτελεσμάτων του Eclipse JUnit (ή τα αποτελέσματα του Maven surefire).
 

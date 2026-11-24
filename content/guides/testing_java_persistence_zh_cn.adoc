@@ -44,7 +44,7 @@ language: zh_cn
 * 使用 JPQL 查询数据库
 * 使用 JPA 2 Criteria API 查询数据库
 
-完整的代码托管存放在 github 上， link:http://github.com/arquillian/arquillian-examples/tree/master/arquillian-persistence-tutorial[Arquillian examples project] 。要看运行情况，要做的是运行下面的命令(请保持耐心，等待 Maven 下载相关依赖)。
+完整的代码托管存放在 github 上， https://github.com/arquillian/arquillian-examples/tree/master/arquillian-persistence-tutorial[Arquillian examples project] 。要看运行情况，要做的是运行下面的命令(请保持耐心，等待 Maven 下载相关依赖)。
 
 [source,command]
 ----
@@ -56,7 +56,7 @@ mvn test
 
 首先熟悉一下项目的目录结构：
 
-(filetree)* src/
+* src/
 ** main/
 *** java/
 **** org/
@@ -143,7 +143,7 @@ public class Game implements Serializable {
 
 === 编写测试
 
-谈到测试，我们先创建一个 JUnit 4 Arquillian 测试用例，名为 `GamePersistenceTest`, 准备它用来测试 JPA 操作。 我们利用 link:http://docs.jboss.org/cdi/spec/1.0/html[CDI (JSR-299)] 来注入要用到的资源。(作为可选方式，你也可以使用一个 EJB 工具来处理事务边界，我们将在后续的教程中介绍)。
+谈到测试，我们先创建一个 JUnit 4 Arquillian 测试用例，名为 `GamePersistenceTest`, 准备它用来测试 JPA 操作。 我们利用 https://docs.jboss.org/cdi/spec/1.0/html[CDI (JSR-299)] 来注入要用到的资源。(作为可选方式，你也可以使用一个 EJB 工具来处理事务边界，我们将在后续的教程中介绍)。
 
 [source]
 ----
@@ -192,9 +192,9 @@ public class GamePersistenceTest {
 我们从上到下来一一讲解这个测试的细节。
 
 - @RunWith(Arquillian.class) := 告诉 JUnit 将运行测试的任务委派给 Arquillian runner。这样 Arquillian 可以提供为你的测试提供一套组件模型，包括容器的生命周期，依赖注入，及其它方面加强。注意，这里并没要求你继承一个基类，这样为其它用途留有余地。
-- @Deployment 方法 := 使用 link:http://jboss.org/shrinkwrap[ShrinkWrap] 创建和返回一个微部署归档文件。 Arquillian 部署这个归档文件(还包含测试用例及额外的基础架构)到容器中。 然后测试作为这个小程序中一个组件开始运行。归档文件为测试提供了一个孤立环境。
+- @Deployment 方法 := 使用 https://jboss.org/shrinkwrap[ShrinkWrap] 创建和返回一个微部署归档文件。 Arquillian 部署这个归档文件(还包含测试用例及额外的基础架构)到容器中。 然后测试作为这个小程序中一个组件开始运行。归档文件为测试提供了一个孤立环境。
 - GAME_TITLES constant := 测试数据
-- `PersistenceContext EntityManager := 直接在测试中注入 persistence context (i.e., `EntityManager@)， 将测试看作一个link:http://download.oracle.com/javaee/6/api/javax/annotation/ManagedBean.html[managed bean] 。
+- `PersistenceContext EntityManager := 直接在测试中注入 persistence context (i.e., `EntityManager@)， 将测试看作一个https://download.oracle.com/javaee/6/api/javax/annotation/ManagedBean.html[managed bean] 。
 - @Inject UserTransaction := 直接在测试中注入 JTA 事务，由 (JSR-299) 提供服务。
 
 绕开 JPA 相关设置造成的困扰，我们引入拦截方法，在测试运行之前和之后运行。下面看一下这些拦截相关的代码。
@@ -437,7 +437,7 @@ public void shouldFindAllGamesUsingCriteriaApi() throws Exception {
 ----
 这是 ShrinkWrap 为这个测试准备的归档文件的结构( 不包含 Arquillian 基础设施):
 
-(filetree)* WEB-INF/
+* WEB-INF/
 ** beans.xml
 ** classes/
 *** META-INF/
@@ -462,11 +462,11 @@ public void shouldFindAllGamesUsingCriteriaApi() throws Exception {
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence version="2.0" xmlns="https://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        https://java.sun.com/xml/ns/persistence
+        https://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="test">
         <jta-data-source>jdbc/arquillian</jta-data-source>
         <properties>
@@ -506,7 +506,7 @@ test-persistence.xml 中 Persistence Unit 引用的 DataSource 名为 jdbc/arqui
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resources PUBLIC
     "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
-    "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+    "https://glassfish.org/dtds/glassfish-resources_1_5.dtd">
 <resources>
     <jdbc-resource pool-name="ArquillianEmbeddedDerbyPool"
         jndi-name="jdbc/arquillian"/>
@@ -528,11 +528,11 @@ test-persistence.xml 中 Persistence Unit 引用的 DataSource 名为 jdbc/arqui
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="glassfish-embedded" default="true">
         <configuration>
             <property name="resourcesXml">
@@ -547,11 +547,11 @@ test-persistence.xml 中 Persistence Unit 引用的 DataSource 名为 jdbc/arqui
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence version="2.0" xmlns="https://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        https://java.sun.com/xml/ns/persistence
+        https://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="test">
         <properties>
             <property name="javax.persistence.jdbc.driver"
@@ -605,7 +605,7 @@ test-persistence.xml 中 Persistence Unit 引用的 DataSource 名为 jdbc/arqui
 ----
 [WARNING]
 ====
-如果你打算使用使用非服务器自带的数据库，如 MySQL， Classpth 中必须包含相应的库文件。参见 "sample project":http://github.com/arquillian/arquillian-examples/tree/master/arquillian-persistence-tutorial ，有使用 H2 替代 Derby的例子。
+如果你打算使用使用非服务器自带的数据库，如 MySQL， Classpth 中必须包含相应的库文件。参见 "sample project":https://github.com/arquillian/arquillian-examples/tree/master/arquillian-persistence-tutorial ，有使用 H2 替代 Derby的例子。
 ====
 
 现在添加(或修改)针对 Embedded GlassFish 的 profile:
@@ -727,9 +727,9 @@ Found 3 games (using Criteria):
 * Game@294335520[id = 6; title = F-Zero]
 ...
 ----
-*恭喜你!* *(greenbar)绿条*! _现在是一个真实集成测试!_
+*恭喜你!* [.greenbar]*绿条*! _现在是一个真实集成测试!_
 
-p(important). %当你使用一些高级的 JPA 映射功能，如 lazy loading 和 fetch groups, 你可能会遇到错误或者警告，因为 Embedded GlassFish 会影响 EclipseLink 必需的编织步骤。需要额外的构建配置来回避这个问题，详细步骤，请参考 link:http://blog.eisele.net/2012/01/arquillian-with-netbeans-glassfish_18.html[Markus Eisele's blog] 。当你使用一个托管和远程容器，完全可以忽略这个问题。%
+p(important). %当你使用一些高级的 JPA 映射功能，如 lazy loading 和 fetch groups, 你可能会遇到错误或者警告，因为 Embedded GlassFish 会影响 EclipseLink 必需的编织步骤。需要额外的构建配置来回避这个问题，详细步骤，请参考 https://blog.eisele.net/2012/01/arquillian-with-netbeans-glassfish_18.html[Markus Eisele's blog] 。当你使用一个托管和远程容器，完全可以忽略这个问题。%
 
 === 在 JBoss AS 7 上运行测试
 
@@ -737,18 +737,18 @@ p(important). %当你使用一些高级的 JPA 映射功能，如 lazy loading �
 
 首先需要一个不同的 Persistence Unit 定义，指定用于 JBoss AS 上的  Datasource(还可以选择性地设置一些 Hibernate 配置)。
 
-如果你正在使用 JBoss AS 7.0, 你可以必须 link:https://docs.jboss.org/author/display/AS7/Admin+Guide#AdminGuide-Datasources[ 在JBoss AS 配置中手动配置一个 DataSource] 或者使用内置 DataSource, java:jboss/datasources/ExampleDS。 这里的 针对  JBoss AS 7.0 的 Persistence Unit 描述文件就是内置的 DataSource。
+如果你正在使用 JBoss AS 7.0, 你可以必须 https://docs.jboss.org/author/display/AS7/Admin+Guide#AdminGuide-Datasources[ 在JBoss AS 配置中手动配置一个 DataSource] 或者使用内置 DataSource, java:jboss/datasources/ExampleDS。 这里的 针对  JBoss AS 7.0 的 Persistence Unit 描述文件就是内置的 DataSource。
 
 [source]
 ----
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence version="2.0" xmlns="https://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        https://java.sun.com/xml/ns/persistence
+        https://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="test">
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
         <properties>
@@ -769,11 +769,11 @@ Hibernate 特有的属性 hibernate.hbm2ddl.auto 和 hibernate.show_sql 扮演�
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<datasources xmlns="https://www.jboss.org/ironjacamar/schema"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://www.jboss.org/ironjacamar/schema
-        http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+        https://www.jboss.org/ironjacamar/schema
+        https://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
     <datasource enabled="true"
         jndi-name="jdbc/arquillian"
         pool-name="ArquillianEmbeddedH2Pool">
@@ -794,11 +794,11 @@ JBoss AS 7.1 内置支持 H2 数据库。要使用其他数据库，你必须将
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence version="2.0" xmlns="https://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        https://java.sun.com/xml/ns/persistence
+        https://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="test">
         <jta-data-source>jdbc/arquillian</jta-data-source>
         <properties>
@@ -870,7 +870,7 @@ $ mvn clean test -Parquillian-jbossas-managed
 请确认 JBOSS_HOME 环境变量指向了 JBoss AS 7.1.1.Final 安装位置。 你也可以指定在 arquillian.xml 设置 jbossHome 属性。
 ====
 
-轮到你了。 你也可以在 IDE 运行测试！只需要导入项目，激活 arquillian-jbossas-managed Maven profile (同时禁用掉 arquillian-glassfish-embedded profile), 打开测试用例，最后选择 "Run As > JUnit Test"。 哇塞! 运行结果和其他 JUnit 测试一样。 *(greenbar)绿条*!
+轮到你了。 你也可以在 IDE 运行测试！只需要导入项目，激活 arquillian-jbossas-managed Maven profile (同时禁用掉 arquillian-glassfish-embedded profile), 打开测试用例，最后选择 "Run As > JUnit Test"。 哇塞! 运行结果和其他 JUnit 测试一样。 [.greenbar]*绿条*!
 
 *尽情的享受完美的 JPA 测试方案吧!*
 

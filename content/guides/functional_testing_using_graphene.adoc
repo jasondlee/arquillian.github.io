@@ -32,7 +32,7 @@ In this guide, we'll be using the following technologies:
 * Arquillian Graphene
 * Selenium WebDriver
 
-All these listed technologies are part of the Arquillian test platform. Both Arquillian Drone and Graphene are working with link:http://seleniumhq.org,[Selenium WebDriver] which is, in short, link:https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html[a standard technology] for browser automation. Arquillian Drone integrates the Selenium framework with Arquillian and facilitates some of the tedious processes needed to test the frontend of any web application. Arquillian Graphene is built on top of the link:http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html[Selenium WebDriver API] and adds a lot of features for writing reusable and maintainable functional tests. You will see them in a minute!
+All these listed technologies are part of the Arquillian test platform. Both Arquillian Drone and Graphene are working with https://seleniumhq.org,[Selenium WebDriver] which is, in short, https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html[a standard technology] for browser automation. Arquillian Drone integrates the Selenium framework with Arquillian and facilitates some of the tedious processes needed to test the frontend of any web application. Arquillian Graphene is built on top of the https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html[Selenium WebDriver API] and adds a lot of features for writing reusable and maintainable functional tests. You will see them in a minute!
 
 If you're already familiar with Selenium, you'll discover that Arquillian manages the Selenium life cycle in much the same way it manages the container life cycle. If Selenium is new to you, this is a great opportunity to begin using its enhanced version Graphene to test the web UI of your application.
 
@@ -50,7 +50,7 @@ public class BasicInContainerTest {
             .addClass(MyBean.class)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-----
+
     @Inject
     MyBean bean;
 
@@ -59,6 +59,7 @@ public class BasicInContainerTest {
         Assert.assertNotNull(bean);
     }
 }
+----
 
 Here we have deployed a CDI bean to the server inside a bean archive. In the test, we've injected the instance of the bean, then asserted that the injection has occurred. Arquillian first enriches the archive with the test infrastructure. It then connects to the server to deploy the archive and execute the test method inside of the container by launching the JUnit test runner a second time inside that environment. Finally, Arquillian retrieves the results from that remote execution. This example demonstrates the default run mode of Arquillian: in-container. In a sense, the local JUnit runner is a client of the container, being driven by Arquillian.
 
@@ -78,11 +79,11 @@ public class BasicClientTest {
             .addClasses(MyBean.class)
             .setWebXML("WEB-INF/web.xml");
     }
-----
     @Test
     public void should_login_successfully() {
     }
 }
+----
 
 It's also possible to mix in-container and client modes in the same test! Just leave off the `testable` attribute. Any method annotated with `RunAsClient` will execute from the client, the remainder will execute inside the container, giving you the best of both worlds!
 
@@ -96,7 +97,7 @@ public class MixedRunModeTest {
             .addClass(MyBean.class)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-----
+
     @Inject
     MyBean bean;
 
@@ -112,16 +113,18 @@ public class MixedRunModeTest {
         // executed from the client JVM
     }
 }
+----
 
 Now that you understand how to run a test in client mode, let's check out how to test a web UI by using Arquillian Graphene to drive your browser.
 
 === Graphene Overview
 
-Arquillian Graphene is a set of extensions for the link:http://docs.seleniumhq.org,[WebDriver API] focused on rapid development and usability in a Java environment. Its API encourages people to write tests for AJAX-based web applications in a concise and maintainable way. Graphene strives for reusable tests by simplifying the use of web page abstractions (link:https://docs.jboss.org/author/display/ARQGRA2/Page+Objects[Page Objects] and link:https://docs.jboss.org/author/display/ARQGRA2/Page+Fragments).[Page Fragments] You will get a taste of the Graphene API in just a minute!
+Arquillian Graphene is a set of extensions for the https://docs.seleniumhq.org,[WebDriver API] focused on rapid development and usability in a Java environment. Its API encourages people to write tests for AJAX-based web applications in a concise and maintainable way. Graphene strives for reusable tests by simplifying the use of web page abstractions (https://docs.jboss.org/author/display/ARQGRA2/Page+Objects[Page Objects] and https://docs.jboss.org/author/display/ARQGRA2/Page+Fragments).[Page Fragments] You will get a taste of the Graphene API in just a minute!
 
 Arquillian Graphene depends on Arquillian Drone, which is an extension that manages the life cycle of the tested browsers. Drone simplifies the initial test setup and prepares tests for continuous integration in variety of web browsers.
 
-Currently the list of supported browsers is pretty large, a bounded set of those provided by the Selenium project: e.g. Chrome, Firefox, Internet Explorer, Safari, Opera. It also supports the link:http://blog.arhg.net/2009/10/what-is-headless-browser.html[headless browsers] PhantomJS and HTMLUnit. Like Arquillian Core; Arquillian Graphene and  Arquillian Drone extensions are, well, pretty extensible.
+Currently, the list of supported browsers is pretty large, a bounded set of those provided by
+the Selenium project: e.g. Chrome, Firefox, Internet Explorer, Safari, Opera. It also supports the https://blog.arhg.net/2009/10/what-is-headless-browser.html[headless browsers] PhantomJS and HTMLUnit. Like Arquillian Core; Arquillian Graphene and  Arquillian Drone extensions are, well, pretty extensible.
 
 Let's get Arquillian Graphene configured so that we can start writing some tests.
 
@@ -141,9 +144,6 @@ Let's start by setting up the libraries in the Maven pom.xml file needed to use 
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencyManagement>
     <dependencies>
         <dependency>
@@ -155,15 +155,12 @@ Let's start by setting up the libraries in the Maven pom.xml file needed to use 
         </dependency>
     </dependencies>
 </dependencyManagement>
-<!-- clip -->
+
 ----
 Below that `<dependency>`, add another entry for defining the version matrix for Drone and Selenium transitive dependencies, leaving you with the following result:
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencyManagement>
     <dependencies>
         <dependency>
@@ -173,7 +170,7 @@ Below that `<dependency>`, add another entry for defining the version matrix for
             <type>pom</type>
             <scope>import</scope>
         </dependency>
-        <dependency>                                      <!-- Selenium bom is optional - see note below -->
+        <dependency> <!-- Selenium bom is optional - see note below -->
             <groupId>org.jboss.arquillian.selenium</groupId>
             <artifactId>selenium-bom</artifactId>
             <version>2.53.1</version>
@@ -189,7 +186,6 @@ Below that `<dependency>`, add another entry for defining the version matrix for
         </dependency>
     </dependencies>
 </dependencyManagement>
-<!-- clip -->
 ----
 [NOTE]
 ====
@@ -201,9 +197,6 @@ If you've set up Arquillian previously, you should already have the JUnit and Ar
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencies>
     <dependency>
         <groupId>org.jboss.arquillian.junit</groupId>
@@ -217,15 +210,12 @@ If you've set up Arquillian previously, you should already have the JUnit and Ar
         <version>4.11</version>
     </dependency>
 </dependencies>
-<!-- clip -->
+
 ----
 Next, add the Graphene dependency, which brings you all the other required dependencies:
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependency>
     <groupId>org.jboss.arquillian.graphene</groupId>
     <artifactId>graphene-webdriver</artifactId>
@@ -233,23 +223,18 @@ Next, add the Graphene dependency, which brings you all the other required depen
     <type>pom</type>
     <scope>test</scope>
 </dependency>
-<!-- clip -->
 ----
 
-You have to specify the dependency on a container adapter. We will use the link:http://wildfly.org/[WildFly] 10 remote container, because it is an effective way to develop tests. You can read more about that in the blog link:http://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-2-rapid-test-development.html[rapid test development turnaround] (the section "Remote Servers").
+You have to specify the dependency on a container adapter. We will use the https://wildfly.org/[WildFly] 10 remote container, because it is an effective way to develop tests. You can read more about that in the blog https://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-2-rapid-test-development.html[rapid test development turnaround] (the section "Remote Servers").
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependency>
     <groupId>org.wildfly.arquillian</groupId>
     <artifactId>wildfly-arquillian-container-remote</artifactId>
     <version>2.0.0.Final</version>
     <scope>test</scope>
 </dependency>
-<!-- clip -->
 ----
 p(important). %If you are testing against multiple containers, then the container adapter should be included in a dedicated profile, as described in the Arquillian link:/guides/getting_started[Getting Started] guide.%
 
@@ -257,15 +242,10 @@ You typically need to test your web application across different browsers. Let's
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <properties>
     <browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
 </properties>
-<!-- clip -->
-----
-<!-- clip -->
+
 <profiles>
     <profile>
        <id>firefox</id>
@@ -282,9 +262,8 @@ You typically need to test your web application across different browsers. Let's
 
     <!-- feel free to add any other browser you like -->
 </profiles>
-<!-- clip -->
+
 <build>
-    <!-- clip -->
     <!-- test resource filtering evaluates ${browser} expression in arquillian.xml -->
     <testResources>
         <testResource>
@@ -292,32 +271,33 @@ You typically need to test your web application across different browsers. Let's
             <filtering>true</filtering>
         </testResource>
     </testResources>
-    <!-- clip -->
+
 </build>
-<!-- clip -->
-
-Next you need to setup `arquillian.xml` in order to change the Arquillian settings for browser selection. Add the following to the `arquillian.xml`:
-
-[source]
 ----
+
+Next you need to set up `arquillian.xml` in order to change the Arquillian settings for browser
+ selection. Add the following to the `arquillian.xml`:
+
 [source]
 ----
 <arquillian>
-----
-    <!-- clip -->
+
     <extension qualifier="webdriver">
         <property name="browser">${browser}</property>
     </extension>
-    <!-- clip -->
 
 </arquillian>
+----
 
 [NOTE]
 ====
-"PhantomJS":http://phantomjs.org/ can be used as the default browser; thanks to its ability to operate in resource-limited environments such as continuous integration servers, while closely simulating the behavior of the Chrome browser.
+"PhantomJS":https://phantomjs.org/ can be used as the default browser; thanks to its ability to operate in resource-limited environments such as continuous integration servers, while closely simulating the behavior of the Chrome browser.
 ====
 
-p(important). %If you're using Maven prior to version 3.0.5 and you can't upgrade, you'll need to use `maven-resource-plugin` version 2.5 or higher in order for the filtering of test resources to work correctly. You can do that by specifying the plugin version in <pluginManagement> of your `pom.xml` file.%
+[IMPORTANT]
+====
+If you're using Maven prior to version 3.0.5 and you can't upgrade, you'll need to use `maven-resource-plugin` version 2.5 or higher in order for the filtering of test resources to work correctly. You can do that by specifying the plugin version in <pluginManagement> of your `pom.xml` file.
+====
 
 === Create a Login Screen
 
@@ -325,20 +305,18 @@ When writing a web UI test, you have to make sure you deploy a complete web appl
 
 To create the login screen of the application, we need the following files and resources:
 
-# Credentials bean to capture the username and password
-# User bean to represent the current user
-# Login controller to authenticate the user and produce the current user
-# Login page
-# Home page (landing page after successful login)
+. Credentials bean to capture the username and password
+. User bean to represent the current user
+. Login controller to authenticate the user and produce the current user
+. Login page
+. Home page (landing page after successful login)
 
 If you haven't done so already, open the project in your IDE. Next, create a `Credentials` class in the `org.arquillian.example` package.
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 import javax.enterprise.inject.Model;
 
 @Model
@@ -362,6 +340,7 @@ public class Credentials {
         this.password = password;
     }
 }
+----
 
 `Credentials` is a request-scoped, named bean (as indicated by the `Model` stereotype annotation) to make it capable of capturing data from the JSF login form we are going to create.
 
@@ -369,10 +348,8 @@ Next, create the `User` class in the same package. In a more advanced example th
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 public class User {
     private String username;
 
@@ -390,15 +367,14 @@ public class User {
         this.username = username;
     }
 }
+----
 
 Next up, create the `LoginController` class, again in the same package. For the purpose of this example, this implementation only accepts a user name and password of "demo" and issues a welcome message when the login is successful.
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
@@ -456,20 +432,20 @@ public class LoginController implements Serializable {
         return currentUser;
     }
 }
+----
 
 The `LoginController` is `SessionScoped` so that it can store the current user for the duration of the user's session, and `Named` so that it can be accessed by the action button on the login form.
 
-Finally we need to create the UI screens. In the `src/main/webapp` directory create a login page:
+Finally, we need to create the UI screens. In the `src/main/webapp` directory create a login
+page:
 
 [source]
 ----
-[source]
-----
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="https://www.w3.org/1999/xhtml"
+    xmlns:ui="https://java.sun.com/jsf/facelets"
+    xmlns:h="https://java.sun.com/jsf/html"
+    xmlns:f="https://java.sun.com/jsf/core">
     <head>
         <title>Log in</title>
     </head>
@@ -492,13 +468,11 @@ and a home page:
 
 [source]
 ----
-[source]
-----
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="https://www.w3.org/1999/xhtml"
+ xmlns:ui="https://java.sun.com/jsf/facelets"
+	xmlns:h="https://java.sun.com/jsf/html"
+	xmlns:f="https://java.sun.com/jsf/core">
 <h:head>
 	<title>Home</title>
 </h:head>
@@ -525,10 +499,8 @@ Here's the shell of a test case for testing the login screen with just the `Depl
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 import java.io.File;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -556,8 +528,12 @@ public class LoginScreenGrapheneTest {
                 "faces-config.xml");
     }
 }
+----
 
-p(important). %Don't forget to set the `testable = false` attribute on the `Deployment` annotation to enable client mode.%
+[IMPORTANT]
+====
+Don't forget to set the `testable = false` attribute on the `Deployment` annotation to enable client mode.
+====
 
 [WARNING]
 ====
@@ -568,14 +544,10 @@ If you have a lot of web pages that are part of the test, having to add them to 
 
 [source]
 ----
-[source]
-----
-// clip
 import org.jboss.shrinkwrap.api.Filters;
 import org.jboss.shrinkwrap.api.GenericArchive;
 import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
-// clip
-----
+
 return ShrinkWrap.create(WebArchive.class, "login.war")
     .addClasses(Credentials.class, User.class, LoginController.class)
     .merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
@@ -585,18 +557,14 @@ return ShrinkWrap.create(WebArchive.class, "login.war")
     .addAsWebInfResource(
         new StringAsset("<faces-config version=\"2.0\"/>"),
         "faces-config.xml");
+----
 
-// clip
-
-For more information about how to use `ExplodedImporter` for this task, and alternative strategies, see link:https://community.jboss.org/wiki/HowDoIAddAllWebResourcesToTheShrinkWrapArchive.[this FAQ]
+For more information about how to use `ExplodedImporter` for this task, and alternative strategies, see https://community.jboss.org/wiki/HowDoIAddAllWebResourcesToTheShrinkWrapArchive.[this FAQ]
 
 One way to trim this down is to move the creation of the archive to a utility class and refer to it whenever you need this particular micro application. That leaves you with a much simpler `Deployment` method:
 
 [source]
 ----
-[source]
-----
-// clip
 @RunWith(Arquillian.class)
 public class LoginScreenGrapheneTest {
     @Deployment(testable = false)
@@ -613,13 +581,9 @@ Let's start with injecting the well known `WebDriver` object, which represents a
 
 [source]
 ----
-[source]
-----
-// clip
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.openqa.selenium.WebDriver;
-// clip
-----
+
 @RunWith(Arquillian.class)
 public class LoginScreenGrapheneTest {
     @Deployment(testable = false)
@@ -630,22 +594,20 @@ public class LoginScreenGrapheneTest {
     @Drone
     private WebDriver browser;
 }
+----
 
-*That's it!* The `Drone` injection point tells Drone to create an instance of the browser controller, link:http://selenium.googlecode.com/git/docs/api/java/index.html,[WebDriver] before the first client test is run, then inject that object into the test case.
+*That's it!* The `Drone` injection point tells Drone to create an instance of the browser controller, https://selenium.googlecode.com/git/docs/api/java/index.html,[WebDriver] before the first client test is run, then inject that object into the test case.
 
-*Oh wait!* Where is Graphene? In fact, Graphene wraps the instance of the browser you have just injected. It instruments the WebDriver API in order to enable more advanced features. Where possible, it doesn't persuade any of it's own syntax.
+*Oh, wait!* Where is Graphene? In fact, Graphene wraps the instance of the browser you have
+just injected. It instruments the WebDriver API in order to enable more advanced features. Where possible, it doesn't persuade any of its own syntax.
 
 There's one more thing. We're testing web UI, but how do we know the URL of the deployed application? Well, Arquillian already has a solution. Just use `ArquillianResource` to inject the URL.
 
 [source]
 ----
-[source]
-----
-// clip
 import java.net.URL;
 import org.jboss.arquillian.test.api.ArquillianResource;
-// clip
-----
+
 @RunWith(Arquillian.class)
 public class LoginScreenGrapheneTest {
     @Deployment(testable = false)
@@ -659,6 +621,7 @@ public class LoginScreenGrapheneTest {
     @ArquillianResource
     private URL deploymentUrl;
 }
+----
 
 Now even the URL of your deployed archive is injected in the test. It's now time to drive the browser to verify the functionality of the web application.
 
@@ -668,17 +631,12 @@ Here's the test method that pokes at the login screen to make sure it works. We 
 
 [source]
 ----
-[source]
-----
-// clip
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 import static org.jboss.arquillian.graphene.Graphene.waitAjax;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-----
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 
 @FindBy(id = "loginForm:userName")                                  // 2. injects an element
 private WebElement userName;
@@ -703,7 +661,7 @@ public void should_login_successfully() {
     waitAjax().until().element(signedAs).is().present();
     assertTrue(signedAs.getText().contains("demo"));
 }
-// clip
+----
 
 Once the browser is started and Drone injects the `WebDriver` handle to the test instance, we need to open the tested page (*step 1*). Notice how we are using the URL of an application deployed into a container.
 
@@ -720,12 +678,13 @@ In *step 3*, we are just controlling the page using the `WebElement` API - the e
 Do you like how HTML and CSS help you to split page logic and its associated presentation? In the same sense, the @FindBy@ annotation splits the page into structure and test-logic. You will get to know more advanced usages of page abstraction later in this guide.
 ====
 
-Finally you are able to run the test! Choose the `firefox` profile of your project in your IDE (CTRL + P hotkey in Eclipse).
-Right click on the test in your IDE and select Run As > JUnit test. Don't forget to start your JBoss AS 7.1.1.Final instance before running the test. Arquillian will then connect to JBoss AS in order to magically flip through the pages. The result of the test will appear as normal in your JUnit view.
+Finally, you are able to run the test! Choose the `firefox` profile of your project in your IDE
+ (CTRL + P hotkey in Eclipse).
+right-click on the test in your IDE and select Run As > JUnit test. Don't forget to start your JBoss AS 7.1.1.Final instance before running the test. Arquillian will then connect to JBoss AS in order to magically flip through the pages. The result of the test will appear as normal in your JUnit view.
 
 image::/images/guides/arquillian_drone_tutorial_junit_green_bar.png[]
 
-*Congratulations!* You've just tested that your application login page work correctly in Firefox! *(greenbar)Green bar*!
+*Congratulations!* You've just tested that your application login page work correctly in Firefox! [.greenbar]*Green bar*!
 
 You can also run the test on the command line using Maven:
 
@@ -753,10 +712,8 @@ For that, we will need to describe all the elements that we will find on our tes
 
 [source]
 ----
-// clip
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
-// clip
-----
+
 @FindBy(id = "loginForm:userName")          // 1. injects an element by default location strategy ("idOrName")
 private WebElement userName;
 
@@ -774,7 +731,7 @@ private WebElement signedAs;
 
 @FindBy(css = "input[type=submit]")
 private WebElement whoAmI;
-// clip
+----
 
 As you can see, we use the `FindBy` annotation again to inject more elements. However, now we're specify how to locate the elements in more detail.
 
@@ -793,13 +750,10 @@ Once you have described the page structure, you can use the DOM elements to mani
 
 [source]
 ----
-[source]
-----
-// clip
+
 @Test
 public void should_login_successfully() {
     browser.get(deploymentUrl.toExternalForm() + "login.jsf");
-----
     userName.sendKeys("demo");
     password.sendKeys("demo");
 
@@ -809,7 +763,7 @@ public void should_login_successfully() {
     whoAmI.click();
     assertTrue(signedAs.getText().contains("demo"));
 }
-// clip
+----
 
 You can now run the test again: *(redbar)Red bar*
 
@@ -819,10 +773,15 @@ The problem you might run into is one of the tedious issues of with Selenium tes
 
 [NOTE]
 ====
-As you will experience, most of the actions on AJAX-enabled pages don't block the Selenium execution. In the end, you will need to synchronize almost all the page interactions. In fact, in order to be sure the tests won't fail intermitently no matter where they are run, you should synchronize each manipulation with the page. Only that way will you ensure reproducibility.
+As you will experience, most of the actions on AJAX-enabled pages don't block the Selenium execution. In the end, you will need to synchronize almost all the page interactions. In fact, in order to be sure the tests won't fail intermittently no matter where they are run, you should synchronize each manipulation with the page. Only that way will you ensure reproducibility.
 ====
 
-p(important). %You should forget about using delays as a method of synchronization in your tests. A poorly written test can run on your development machine but it can simply fail in more problematic environments.%
+[IMPORTANT]
+====
+You should forget about using delays as a method of synchronization in your
+tests. A poorly written test can run on your development machine, but it can simply fail in
+more problematic environments.
+====
 
 Graphene takes this challenge seriously, and allows you to cope with it as simple as possible.
 
@@ -830,10 +789,7 @@ This is Graphene's way to concisely synchronize the page state:
 
 [source]
 ----
-// clip
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
-// clip
-----
 browser.get(deploymentUrl.toExternalForm() + "login.jsf"); // first page load doesn't have to be synchronized
 
 userName.sendKeys("demo");
@@ -844,15 +800,15 @@ assertEquals("Welcome", facesMessage.getText().trim());
 
 guardAjax(whoAmI).click();                                 // 2. synchronize AJAX request
 assertTrue(signedAs.getText().contains("demo"));
-// clip
+----
 
 *That's it!* All you need is to wrap the two page instructions!
 
-When we click on the login button (*step 1*), we are re-locating to another page, so we are using link:https://docs.jboss.org/author/display/ARQGRA2/Request+Guards[Request Guards] to wait until the full-page update ends.
+When we click on the login button (*step 1*), we are re-locating to another page, so we are using https://docs.jboss.org/author/display/ARQGRA2/Request+Guards[Request Guards] to wait until the full-page update ends.
 
-Then we click on the button to discovered the user's name, and we guard the AJAX request - the test won't continue until the page is fully updated as a result of the AJAX request.
+Then we click on the button to discover the user's name, and we guard the AJAX request - the test won't continue until the page is fully updated as a result of the AJAX request.
 
-Let's run the test again: *(greenbar)Green bar*
+Let's run the test again: [.greenbar]*Green bar*
 
 We were able to improve the test, so that no matter how slow or resource-limited your machine is, your test will run.  It will deterministically verify the web page logic.
 
@@ -871,10 +827,7 @@ For the sake of completeness, let's look at how you could refactor the test when
 
 [source]
 ----
-// clip
 import static org.jboss.arquillian.graphene.Graphene.waitModel;
-// clip
-----
 browser.get(deploymentUrl.toExternalForm() + "login.jsf");
 
 userName.sendKeys("demo");
@@ -885,15 +838,19 @@ assertEquals("Welcome", facesMessage.getText().trim());
 
 guardAjax(whoAmI).click();
 waitAjax().until().element(signedAs).text().contains("demo"); // use condition as an assertion
-// clip
+----
 
-Use Request Guards whereever you can, as they are the simplest form of synchronization API. Use the Waiting API everywhere else.
+Use Request Guards wherever you can, as they are the simplest form of synchronization API. Use
+ the Waiting API everywhere else.
 
 === Abstract Pages and their Fragments
 
 As your application grows, you will continue to author new tests.  It will quickly become apparent that you need to tame the size of your growing functional test suite.
 
-p(important). %A huge functional test suite without a proper structure can become a maintainance nightmare.%
+[IMPORTANT]
+====
+A huge functional test suite without a proper structure can become a maintenance nightmare.
+====
 
 It is possible that a bell in your head already started to ring when you read the test logic defined above:
 
@@ -906,10 +863,8 @@ Let's start with separating the test into two pages: a login page and a home pag
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
 import org.jboss.arquillian.graphene.enricher.findby.FindBy;
@@ -934,17 +889,17 @@ public class LoginPage {
         guardHttp(loginButton).click();
     }
 }
+----
 
-Notice how the page encapsulates the location of the home page using the `Location` annotation. It is like a bookmark for the tests.
+Notice how the page encapsulates the location of the home page using the `Location` annotation
+. It is like a bookmark for the tests.
 
 Now a class for the home page:
 
 [source]
 ----
-[source]
-----
 package org.arquillian.example;
-----
+
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 
 import org.jboss.arquillian.graphene.GrapheneElement;
@@ -981,16 +936,14 @@ public class HomePage {
         guardAjax(whoAmI).click();
     }
 }
+----
 
 Since we have abstracted the pages into separate classes, we are now able to thoroughly simplify the test:
 
-[source]
+[source,java]
 ----
-[source]
-----
-//clip
 import org.jboss.arquillian.graphene.spi.annotations.Page;
-----
+
 @Page
 private HomePage homePage;
 
@@ -1002,9 +955,9 @@ public void should_login_successfully( @InitialPage LoginPage loginPage ) {
 
    assertTrue(homePage.getUserName(), USER_NAME);
 }
-//clip
+----
 
-Run the tests and again... *(greenbar)Green Bar*
+Run the tests and again... [.greenbar]*Green Bar*
 
 Awesome! The Page Objects pattern has been applied.
 
@@ -1019,7 +972,7 @@ But that's not where our refactoring ends.
 
 In our use case, we have just one login form. But some applications provide the same login form on multiple pages, so they can navigate visitors to authenticated areas. They could also define more than one form on one page! How can we avoid duplications?
 
-Fortunately Graphene provides you with the link:https://docs.jboss.org/author/display/ARQGRA2/Page+Fragments[Page Fragments] pattern - Page Fragments allow you to encapsulate small reocurring pieces of pages into reusable abstractions.
+Fortunately Graphene provides you with the https://docs.jboss.org/author/display/ARQGRA2/Page+Fragments[Page Fragments] pattern - Page Fragments allow you to encapsulate small reocurring pieces of pages into reusable abstractions.
 
 [NOTE]
 ====
@@ -1030,11 +983,7 @@ Let's create a new class `LoginForm`. Populate it with the same code which was i
 
 [source]
 ----
-[source]
-----
-//clip
 public class LoginForm {
-----
     @Root
     private WebElement form;
 
@@ -1053,6 +1002,7 @@ public class LoginForm {
         guardHttp(loginButton).click();
     }
 }
+----
 
 We have a general enough implementation of LoginForm, just a few differences here:
 
@@ -1062,12 +1012,8 @@ Additionally we have defined the `Root` element, which serves as a root of the p
 
 [source]
 ----
-[source]
-----
-//clip
 @Location("login.jsf")
 public class LoginPage {
-----
     @FindBy
     private LoginForm loginForm;        // locates the root of a page fragment on a particular page
 
@@ -1075,7 +1021,7 @@ public class LoginPage {
        return loginForm;
     }
 }
-//clip
+----
 
 We're using the same mechanism for locating Page Fragments as we used for `WebElement` fields. The usage of the page fragment in the test is pretty straightforward.
 
@@ -1083,14 +1029,17 @@ _Arquillian makes integration testing a breeze. Arquillian Graphene adds great s
 
 === Documentation and other useful resources
 
-If you are looking for more Graphene goodness, be sure to check the link:https://docs.jboss.org/author/display/ARQGRA2/Home.[Graphene Reference Documentation]
+If you are looking for more Graphene goodness, be sure to check the https://docs.jboss.org/author/display/ARQGRA2/Home.[Graphene Reference Documentation]
 
 [NOTE]
 ====
-This guide really isn't the fastest way to develop functional tests, but the goal of this guide is just to teach you the basics. You can refer to tips & tricks on how to achieve "rapid test development turnaround":http://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-2-rapid-test-development.html.
+This guide really isn't the fastest way to develop functional tests, but the goal of this guide is just to teach you the basics. You can refer to tips & tricks on how to achieve https://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-2-rapid-test-development.html[rapid test development turnaround].
 ====
 
 [NOTE]
 ====
-Even though this guide follows the best practices on how to manage Graphene, including a few extra tricks allowing you to do continuous integration, you should follow up by reading "how to achieving good coverage":http://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-4-continous-integration.html to guard your test against regressions across multiple browsers.
+Even though this guide follows the best practices on how to manage Graphene, including a few
+extra tricks allowing you to do continuous integration, you should follow up by reading
+https://lukas.fryc.eu/blog/2013/06/testing-jsf-richfaces-arquillian-4-continous-integration.html[how to achieve good coverage]
+to guard your test against regressions across multiple browsers.
 ====

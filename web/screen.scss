@@ -804,6 +804,105 @@ ul.filetree {
   (warning $warning_box_background_color)
   (important $important_box_background_color));
 
+// Apply the legacy callout treatment to Asciidoctor admonition blocks.
+body.guide #content .admonitionblock {
+  margin: 1em 0 1.5em;
+  padding-top: 28px;
+  background-position: center 0;
+  background-repeat: no-repeat;
+
+  table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-style: hidden;
+  }
+
+  td.icon {
+    display: none;
+  }
+
+  td.content {
+    display: block;
+    padding: 1.4em 18px 1em;
+    border: 0 solid $info_box_background_color;
+    border-width: 0 1px 3px;
+    @include border-radius(7px 7px 8px 8px);
+    @include background(
+      linear-gradient(left,
+        $info_box_background_color 0%,
+        $info_box_background_color 46%,
+        rgba(255,255,255,0) 46%,
+        rgba(255,255,255,0) 54%,
+        $info_box_background_color 54%,
+        $info_box_background_color
+      ) center 0 no-repeat,
+      linear-gradient(bottom, mix($info_box_background_color, #fff, 10%) 5%, transparentize(mix($info_box_background_color, #fff, 10%), .8) 95%) center 0 no-repeat
+    );
+    @include background-size(100% 1px, auto);
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.warning {
+    background-image: image-url("warning.png");
+
+    td.content {
+      border-color: $warning_box_background_color;
+      background-image: linear-gradient(left,
+        $warning_box_background_color 0%,
+        $warning_box_background_color 46%,
+        rgba(255,255,255,0) 46%,
+        rgba(255,255,255,0) 54%,
+        $warning_box_background_color 54%,
+        $warning_box_background_color
+      ), linear-gradient(bottom, mix($warning_box_background_color, #fff, 10%) 5%, transparentize(mix($warning_box_background_color, #fff, 10%), .8) 95%);
+    }
+  }
+
+  &.important {
+    background-image: image-url("important.png");
+
+    td.content {
+      border-color: $important_box_background_color;
+      background-image: linear-gradient(left,
+        $important_box_background_color 0%,
+        $important_box_background_color 46%,
+        rgba(255,255,255,0) 46%,
+        rgba(255,255,255,0) 54%,
+        $important_box_background_color 54%,
+        $important_box_background_color
+      ), linear-gradient(bottom, mix($important_box_background_color, #fff, 10%) 5%, transparentize(mix($important_box_background_color, #fff, 10%), .8) 95%);
+    }
+  }
+
+  &.note {
+    background-image: image-url("info.png");
+  }
+}
+
+body.guide #content > .header + .header {
+  padding-top: 0;
+  border-top: 0;
+}
+
+body.guide #content > .header:first-child {
+  border-bottom: 0 !important;
+}
+
+body.guide #content > .exampleblock.header {
+  border-top: 0;
+}
+
+body.guide #content > .header ~ h3,
+body.guide #content h3 {
+  font-family: $default_font_family;
+  font-weight: bold;
+}
+
 // Calender image styling
 
 .date {

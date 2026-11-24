@@ -3,19 +3,72 @@
 <main id="main" class="guide" role="main">
     <section id="content-header">
         <div class="container">
-            <h1><a href="/guides/">Arquillian Guides</a></h1>
+            <div class="headline">
+                <h1>
+                    <a href="/guides/">Arquillian Guides</a>
+                    <small>Designed exclusively to teach you how to use Arquillian to write real tests.</small>
+                </h1>
+                <div class="directory">
+                    <a class="guides_menu" href="/guides/" id="guides_menu">Guides Index <i class="icon-menu-closed"></i></a>
+                </div>
+            </div>
         </div>
     </section>
     <div class="container" id="guide">
         <div id="content">
-            <header class="titlebar">
-                <h2>{=page.title}</h2>
-                {#if page.data.authors}<p class="authors"><strong>Authors:</strong> {=page.data.authors}</p>{/if}
-                {#if page.data.translators}<p class="translators"><strong>Translators:</strong> {=page.data.translators}</p>{/if}
-                {#if page.data.tags}<p class="tags"><strong>Tags:</strong> {=page.data.tags}</p>{/if}
-            </header>
+            <div class="header">
+                <header class="titlebar">
+                    <h2>{=page.title}</h2>
+                </header>
+                <div class="authors">
+                    {#if page.data.authors??}
+                    <strong>Authors:</strong>
+                    {#for author in page.data.authors}
+                    {#if identities:find(author)??}<a href="{=identities:find(author).url}">{=identities:find(author).name}</a>{#else}{=author}{/if}{#if author_hasNext}, {/if}
+                    {/for}
+                    {/if}
+                    <strong style="padding-left: 10px;">Translations:</strong>
+                    {#if page.data.translators?? && page.data.translators.size > 0}
+                    {#for translator in page.data.translators}
+                    {#if identities:find(translator)??}<a href="{=identities:find(translator).url}">{=identities:find(translator).name}</a>{#else}{=translator}{/if}{#if translator_hasNext}, {/if}
+                    {/for}
+                    {/if}
+                    {#if page.data.language??}<strong style="padding-left: 10px;">Language:</strong> {=page.data.language}{/if}
+                    <br>
+                    {#if page.data.guide_group == 1}<strong>Level:</strong> First Steps{/if}
+                    {#if page.data.guide_group == 2}<strong>Level:</strong> More Coverage{/if}
+                    {#if page.data.guide_group == 3}<strong>Level:</strong> Enhance{/if}
+                    {#if page.data.tags??}<strong style="padding-left: 10px;">Tags:</strong> {#for tag in page.data.tags}{=tag}{#if tag_hasNext}, {/if}{/for}{/if}
+                    {#if page.data.last_updated??}<strong style="padding-left: 10px;">Last Update:</strong> {=page.data.last_updated}{/if}
+                </div>
+            </div>
             {#insert /}
         </div>
+        {#if page.title == 'Getting Started'}
+        <div id="sidebar">
+            <div id="toc">
+                <h3 class="chapter_header">Chapters</h3>
+                <ol class="chapters">
+                    <li><a id="_assumptions_link" href="#_assumptions">Assumptions</a></li>
+                    <li><a id="_create_a_new_project_link" href="#_create_a_new_project">Create a New Project</a></li>
+                    <li><a id="_open_the_project_in_eclipse_link" href="#_open_the_project_in_eclipse">Open the Project in Eclipse</a></li>
+                    <li><a id="_create_a_component_link" href="#_create_a_component">Create a Component</a></li>
+                    <li><a id="_add_the_arquillian_apis_link" href="#_add_the_arquillian_apis">Add the Arquillian APIs</a></li>
+                    <li><a id="_write_an_arquillian_test_link" href="#_write_an_arquillian_test">Write an Arquillian Test</a></li>
+                    <li><a id="_add_a_container_adapter_link" href="#_add_a_container_adapter">Add a Container Adapter</a></li>
+                    <li><a id="_run_the_arquillian_test_link" href="#_run_the_arquillian_test">Run the Arquillian Test</a></li>
+                    <li><a id="_a_closer_look_link" href="#_a_closer_look">A Closer Look</a></li>
+                    <li><a id="_debug_the_test_link" href="#_debug_the_test">Debug the Test</a></li>
+                    <li><a id="_add_more_containers_link" href="#_add_more_containers">Add More Containers</a></li>
+                    <li><a id="_test_across_containers_link" href="#_test_across_containers">Test Across Containers</a></li>
+                    <li><a id="_share" href="#_share">Share the Knowledge</a></li>
+                </ol>
+            </div>
+        </div>
+        <script>
+            $(function() { activateScrollingToc(['_assumptions', '_create_a_new_project', '_open_the_project_in_eclipse', '_create_a_component', '_add_the_arquillian_apis', '_write_an_arquillian_test', '_add_a_container_adapter', '_run_the_arquillian_test', '_a_closer_look', '_debug_the_test', '_add_more_containers', '_test_across_containers']); });
+        </script>
+        {/if}
     </div>
 </main>
 {/fragment}

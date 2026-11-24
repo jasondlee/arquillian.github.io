@@ -19,14 +19,14 @@ language: ja
 
 === 前提
 
-Arquillianを始める最もシンプルな方法は、依存性の管理をしているプロジェクトのテストスイートに組み込むことです。今日、このカテゴリで最も広く利用されているビルドツールは、 link:http://maven.apache.org[Apache Maven] です。このガイドでは、サンプルのMavenプロジェクトを使って、最初の *(greenbar)グリーンバー* へ案内します。
+Arquillianを始める最もシンプルな方法は、依存性の管理をしているプロジェクトのテストスイートに組み込むことです。今日、このカテゴリで最も広く利用されているビルドツールは、 https://maven.apache.org[Apache Maven] です。このガイドでは、サンプルのMavenプロジェクトを使って、最初の [.greenbar]*グリーンバー* へ案内します。
 
 [NOTE]
 ====
 ArquillianはMavenには、もっと言えばどんな特定のビルドツールにも依存しません。それはAntやGradleでビルドするプロジェクトで使っても--より優れているとは言わないまでも--同じように機能します。理想的には、ビルドツールは、 "Maven Central repository":maven_search で配布されているArquillianライブラリをプロジェクトに追加するタスクを単純化できる、依存性管理を提供している物がいいでしょう。
 ====
 
-このガイドは、読者がコマンドシェルとIDE(Integrated Development Environment:統合開発環境)からMavenを利用できると仮定しています。もしそうでなければ、 link:http://maven.apache.org/download.html[Mavenをダウンロードしてインストールしてください] 。 また、 link:http://www.oracle.com/technetwork/java/javase/downloads[JDK(Java Development Kit) 1.5] 以降のインストールが必要で、JDK 1.6を推奨します。
+このガイドは、読者がコマンドシェルとIDE(Integrated Development Environment:統合開発環境)からMavenを利用できると仮定しています。もしそうでなければ、 https://maven.apache.org/download.html[Mavenをダウンロードしてインストールしてください] 。 また、 https://www.oracle.com/technetwork/java/javase/downloads[JDK(Java Development Kit) 1.5] 以降のインストールが必要で、JDK 1.6を推奨します。
 
 === 新しいプロジェクトを作成する
 
@@ -35,7 +35,7 @@ ArquillianはMavenには、もっと言えばどんな特定のビルドツー�
 # link:#generate_project_from_archetype[Maven archetypeからプロジェクトを生成する]
 # link:#create_project_using_forge[JBoss Forgeでプロジェクトを作成、カスタマイズする]
 
-間違いなく、 link:http://jboss.org/forge[JBoss Forge] はより簡単なやり方ですが、このガイドではJBoss Forgeをまだ受け入れられないことを考慮して、両方のオプションを示します。上で示した二つのオプションからどちらかを選んで、次の説明に飛んでください。
+間違いなく、 https://jboss.org/forge[JBoss Forge] はより簡単なやり方ですが、このガイドではJBoss Forgeをまだ受け入れられないことを考慮して、両方のオプションを示します。上で示した二つのオプションからどちらかを選んで、次の説明に飛んでください。
 
 [NOTE]
 ====
@@ -69,7 +69,7 @@ Y: : <ENTER>
 ----
 このコマンドは、カレントディレクトリに `arquillian-tutorial` という新しいフォルダを作り、そこにMavenベースのJavaプロジェクトを生成します。このプロジェクトのファイル構成は、次のようになります：
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - アプリケーションのすべてのJavaソースファイルをここに置きます。（Javaパッケージの下に置きます）
 *** resources/ - アプリケーションの設定ファイルをここに置きます。
@@ -99,11 +99,11 @@ Arquillianはまた、TestNG 5をサポートしています。しかしこの�
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://maven.apache.org/POM/4.0.0
-        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        https://maven.apache.org/POM/4.0.0
+        https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 ----
     <groupId>org.arquillian.example</groupId>
@@ -112,7 +112,7 @@ Arquillianはまた、TestNG 5をサポートしています。しかしこの�
     <packaging>jar</packaging>
 
     <name>arquillian-tutorial</name>
-    <url>http://arquillian.org</url>
+    <url>https://arquillian.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -172,11 +172,11 @@ Arquillianはまた、TestNG 5をサポートしています。しかしこの�
 [#create_project_using_forge]
 ==== Forgeでプロジェクトを生成する
 
-link:http://jboss.org/forge[JBoss Forge] は、標準ベースの環境で高速アプリケーション開発をするためのコマンドシェルです。別の見方をすれば、ドーピングしたMaven Archetypeのようなものです。
+https://jboss.org/forge[JBoss Forge] は、標準ベースの環境で高速アプリケーション開発をするためのコマンドシェルです。別の見方をすれば、ドーピングしたMaven Archetypeのようなものです。
 
 Forgeのインストールは、比較的短い手順であり、このガイドでは、基礎を体験します。以下の簡単なステップに従ってインストールしてください：
 
-# link:http://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Forgeをダウンロード]
+# https://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Forgeをダウンロード]
 # ダウンロードしたディストリビューションをディスクの任意の場所に展開します。展開されたフォルダを `$FORGE_HOME` と呼びます。
   ホームディレクトリの `forge` というフォルダに配布物を展開したと仮定します。
 # `$FORGE_HOME/bin` を（WindowsやLinux、Mac OSXの）パスに追加します。
@@ -219,7 +219,7 @@ $ project-new --named arquillian-tutorial --topLevelPackage org.arquillian.examp
 
 Forgeが生成したこのプロジェクトのファイル構成を以下に示します：
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - アプリケーションのすべてのJavaソースファイルをここに置きます。（Javaパッケージの下に置きます）
 *** resources/ - アプリケーションの設定ファイルをここに置きます。
@@ -253,7 +253,7 @@ Forgeは、JBoss Communityリポジトリをpom.xmlファイルに追加しま�
 
 [source,command]
 ----
-$ project-remove-repository --url http://repository.jboss.org/nexus/content/groups/public
+$ project-remove-repository --url https://repository.jboss.org/nexus/content/groups/public
 ----
 Forgeが生成したpom.xmlを以下に示します：
 
@@ -262,8 +262,8 @@ Forgeが生成したpom.xmlを以下に示します：
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.arquillian.tutorial</groupId>
     <artifactId>arquillian-tutorial</artifactId>
@@ -325,11 +325,11 @@ Forgeが生成したpom.xmlを以下に示します：
 
 Javaプロジェクトで開発するときは、EclipseのようなIDEを使うでしょう。だから、Arquillianは、IDEフレンドリーに設計されています。特別な設定をしなくてもArquillianテストをIDEから実行できます。IDEの利点をすぐに活用しましょう。
 
-Eclipseの起動から始めます。これはMavenプロジェクトなので、プロジェクトを開くには  link:http://eclipse.org/m2e[Maven Integration for Eclipse] (m2e)のインストールが必要です。
+Eclipseの起動から始めます。これはMavenプロジェクトなので、プロジェクトを開くには  https://eclipse.org/m2e[Maven Integration for Eclipse] (m2e)のインストールが必要です。
 
 ==== m2eプラグインのインストール
 
-もしまだインストールしていなければ、簡単な方法は、 link:http://jboss.org/tools[JBoss Tools] をインストールすることです。次のステップに従ってEclipseマーケットプレイス（Eclipseのアプリケーションストアのようなもの）からインストールしてください。
+もしまだインストールしていなければ、簡単な方法は、 https://jboss.org/tools[JBoss Tools] をインストールすることです。次のステップに従ってEclipseマーケットプレイス（Eclipseのアプリケーションストアのようなもの）からインストールしてください。
 
 # メインメニューから、 `Help > Eclipse Marketplace...` を選択
 #  検索フィールドに"jboss tools"（引用符は除く）と入力し、Enterを押す
@@ -437,7 +437,7 @@ Arquillian-JUnitインテグレーションアーティファクトは、Arquill
 JUnitの代わりにTestNGを使うためには、Arquillian JUnitインテグレーションをArquillian TestNGインテグレーションで置き換えてください。
 ====
 
-（オプション） link:https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild[このFAQ] で説明しているように、MavenのSurefireプラグインをデフォルトのバージョンからアップグレードすることをお勧めします。Surefire Pluginのバージョンは、 `<plugins>` 要素内の、Maven Compiler Pluginの下に、以下の `<plugin>` 要素を加えると設定できます：
+（オプション） https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild[このFAQ] で説明しているように、MavenのSurefireプラグインをデフォルトのバージョンからアップグレードすることをお勧めします。Surefire Pluginのバージョンは、 `<plugins>` 要素内の、Maven Compiler Pluginの下に、以下の `<plugin>` 要素を加えると設定できます：
 
 [source]
 ----
@@ -451,7 +451,7 @@ JUnitの代わりにTestNGを使うためには、Arquillian JUnitインテグ�
 </plugin>
 <!-- clip -->
 ----
-ここまでで、pom.xmlになにか問題があれば、 link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] ファイルを link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[サンプルプロジェクト] からダウンロードできるので、pom.xmlにリネームしてください。
+ここまでで、pom.xmlになにか問題があれば、 https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] ファイルを https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[サンプルプロジェクト] からダウンロードできるので、pom.xmlにリネームしてください。
 
 *最初のArquillianテストを書く準備ができました！*
 
@@ -492,7 +492,7 @@ public class GreeterTest {
 
 ==== テストアーカイブとは？
 
-テストアーカイブの目的は、テストに必要なクラスとリソースを、クラスパスにあるそれ以外から隔離することです。通常のユニットテストとは異なり、Arquillianは単純にクラスパス上のすべてをタップしたりしません。その代わり、テストに必要なもの（もしクラスパス上のすべてと決めれば、それかもしれません）だけを含めます。このアーカイブは、 link:http://jboss.org/shrinkwrap[ShrinkWrap] を使って定義されます。これはアーカイブ（つまり、jar、war、ear）作成用のJava APIです。マイクロデプロイメントストラテジーにより、明確にテストしたいクラスにフォーカスできます。その結果として、テストは無駄のない状態のまま保たれます。
+テストアーカイブの目的は、テストに必要なクラスとリソースを、クラスパスにあるそれ以外から隔離することです。通常のユニットテストとは異なり、Arquillianは単純にクラスパス上のすべてをタップしたりしません。その代わり、テストに必要なもの（もしクラスパス上のすべてと決めれば、それかもしれません）だけを含めます。このアーカイブは、 https://jboss.org/shrinkwrap[ShrinkWrap] を使って定義されます。これはアーカイブ（つまり、jar、war、ear）作成用のJava APIです。マイクロデプロイメントストラテジーにより、明確にテストしたいクラスにフォーカスできます。その結果として、テストは無駄のない状態のまま保たれます。
 
 一度ShrinkWrapアーカイブがサーバーにデプロイされると、それは現実のアーカイブになります。そのコンテナのデプロイヤーはそのアーカイブがShrinkWrapによってアーカイブされたことについてはまったく知りません。ShrinkWrapについては、一つだけ例外的な部分のあるJavaベースのビルドツールと考えることもできます。最適なケースでは、ディスクにアーカイブを書き込むことなくサーバーに送ります。それでもそれが作るのは、本物のアーカイブです。
 
@@ -686,7 +686,7 @@ image::/images/guides/arquillian_tutorial_run_junit_test.png[]
 21 [main] INFO org.jboss.weld.Version - WELD-000900 2.3.5 (Final)
 Hello, Earthling!
 ----
-それから、JUnitビューが表示され、 *(greenbar)グリーンバー* が現れます！
+それから、JUnitビューが表示され、 [.greenbar]*グリーンバー* が現れます！
 
 image::/images/guides/arquillian_tutorial_junit_green_bar.png[]
 
@@ -708,7 +708,7 @@ Running org.arquillian.example.GreeterTest
 Hello, Earthling!
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.907 sec
 ----
-*おめでとう！* Arquillianを使って、最初の *(greenbar)グリーンバー* に到達しました！
+*おめでとう！* Arquillianを使って、最初の [.greenbar]*グリーンバー* に到達しました！
 
 === 詳しく見る
 
@@ -784,7 +784,7 @@ public class Greeter {
 ----
 .addClasses(Greeter.class, PhraseBuilder.class)
 ----
-もう一度テストを実行してください。また、 *(greenbar)グリーンバー* が表示されます！気持ちいいでしょう？
+もう一度テストを実行してください。また、 [.greenbar]*グリーンバー* が表示されます！気持ちいいでしょう？
 
 === テストをデバッグする
 
@@ -915,7 +915,7 @@ Mavenのプロファイルを使えば、依存をグループに入れて区別
 エンベデッドGlassFishなどいくつかのコンテナは、Java EE APIを提供しているので、これらのライブラリへの依存はプロファイル以下に移動しました。同時に両方が同じクラスパス上にあると、コンフリクトを引き起こします。それで、このクラスパスのダンスをしなければなりません。
 ====
 
-ここで2つのプロファイルを `pom.xml` の `<profiles>` 要素内に追加します。一つ目は、 link:http://embedded-glassfish.java.net[Embedded GlassFish] ：
+ここで2つのプロファイルを `pom.xml` の `<profiles>` 要素内に追加します。一つ目は、 https://embedded-glassfish.java.net[Embedded GlassFish] ：
 
 [source]
 ----
@@ -980,13 +980,13 @@ Mavenのプロファイルを使えば、依存をグループに入れて区別
 
 これで、このテストは3つのコンテナの中から一つを選んで実行できるようになりました。
 
-ここまでで、pom.xmlになにか問題があれば、 link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] ファイルを link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[サンプルプロジェクト] からダウンロードできます。
+ここまでで、pom.xmlになにか問題があれば、 https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] ファイルを https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[サンプルプロジェクト] からダウンロードできます。
 
 === コンテナを越えてテストする
 
 Eclipseでプロジェクトをリフレッシュしたら、ビルドされないことに気づくでしょう。これは、コンテナプロファイルのどれかを有効にする必要があるからです。前の状態を復元するためにWeld EEエンベデッドプロファイルを有効にしましょう。
 
-EclipseでMavenプロファイルを有効にするには、2つのやり方があります（ link:http://www.eclipse.org/m2e[Maven Integration for Eclipse] を前提としています）：
+EclipseでMavenプロファイルを有効にするには、2つのやり方があります（ https://www.eclipse.org/m2e[Maven Integration for Eclipse] を前提としています）：
 
 # 手動で設定（標準的なやり方）
 # Maven profile selector (JBoss Tools)
@@ -1048,7 +1048,7 @@ image::/images/guides/arquillian_tutorial_maven_profile_selector.png[]
 Weld EEエンベデッドをデフォルトにする場合、他のプロファイルを確実に無効にしてください。Mave Profle selectorで、エントリを右クリックして、コンテキストメニューからDeactiveを選択すると、プロファイルを無効にできます。これで、プロファイル名の前にエクスクラメーションマークが表示されます（例えば、 @!arquillian-weld-ee-embedded@ ）。複数のファイルが選択されている（または無効化されている）のは、コンマで分けられています。
 ====
 
-テストをまた実行。GlassFishがコンソールで起動するのが見えて…今度も *(greenbar)グリーンバー* です！
+テストをまた実行。GlassFishがコンソールで起動するのが見えて…今度も [.greenbar]*グリーンバー* です！
 
 これで、同じテストを異なる二つのエンベデッドコンテナで実行しました。CDIコンテナ（Weld）とJava EEコンテナ（GlassFish）です。どちらも実行はプロセス内です。純粋な環境でコンポーネントが正常に動作するか本当に確認するには、スタンドアロンのコンテナが必要です。JBoss ASを使うよう切り替えましょう。
 
@@ -1059,12 +1059,12 @@ Weld EEエンベデッドをデフォルトにする場合、他のプロファ�
 
 プロジェクト外でJBoss AS 7をセットアップするには、以下の手順に従ってください：
 
-# link:http://jboss.org/jbossas/downloads[JBoss AS 7をダウンロードする]
+# https://jboss.org/jbossas/downloads[JBoss AS 7をダウンロードする]
 （選んだバージョンが、 `pom.xml` の `<artifactId>jboss-as-arquillian-container-managed</artifactId>` で定義しているバージョンとあっていることを確認してください）
 # アーカイブを展開する
 # （オプション）展開したディレクトリのパスを `JBOSS_HOME` 環境変数にセット
 
-もしJBoss ASがインストール済み（つまり、展開済み）で、 `JBOSS_HOME` 環境変数がその場所を指し示しているなら、 `arquillian-jbossas-managed` プロファイルを有効にして、テストを実行できます。コンソールではJBoss ASが起動しているのが見えて…また *(greenbar)グリーンバー* です！
+もしJBoss ASがインストール済み（つまり、展開済み）で、 `JBOSS_HOME` 環境変数がその場所を指し示しているなら、 `arquillian-jbossas-managed` プロファイルを有効にして、テストを実行できます。コンソールではJBoss ASが起動しているのが見えて…また [.greenbar]*グリーンバー* です！
 
 [NOTE]
 ====
@@ -1114,11 +1114,11 @@ MavenでダウンロードしたJBoss AS 7マネージドインスタンスを�
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -1126,7 +1126,7 @@ MavenでダウンロードしたJBoss AS 7マネージドインスタンスを�
     </container>
 </arquillian>
 ----
-さて、有効なMavenプロファイルを `arquillian-jbossas-managed` に変更して、またテストを実行します。コンソールでJBoss ASの起動が見えて…またもや *(greenbar)グリーンバー* です！
+さて、有効なMavenプロファイルを `arquillian-jbossas-managed` に変更して、またテストを実行します。コンソールでJBoss ASの起動が見えて…またもや [.greenbar]*グリーンバー* です！
 
 これは _同じ_ テストです。今回は完全なJava EEコンテナで実行しました。Arquillianはテストをパッケージ化して、Java EEアーカイブとしてコンテナにデプロイし、リモートでテストを実行し、結果を取得したのち、EclipseのJUnitビュー（またはMavenのsurefire results）に伝えます。
 

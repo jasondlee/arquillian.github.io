@@ -377,7 +377,7 @@ Arquillian 需要容器处于运行状态。因此，我们要对容器进行配
 
 管理服务器最简单的方法就是在 IDE 中进行操作。如果你更多时候是一个惯用命令行的极客，可以跳过这一步，使用相应脚本来启动服务器。
 
-我们将向你演示如何添加服务器到 Eclipse 中。这处过程与其他 IDE 非常类似。在 Eclipse 中，你需要安装 link:http://jboss.org/tools[JBoss Tools] 和 GlassFish Java EE Application Server 插件，两者均可以在 Eclipse MarketPlace 中找到。
+我们将向你演示如何添加服务器到 Eclipse 中。这处过程与其他 IDE 非常类似。在 Eclipse 中，你需要安装 https://jboss.org/tools[JBoss Tools] 和 GlassFish Java EE Application Server 插件，两者均可以在 Eclipse MarketPlace 中找到。
 
 在 Eclipse 中，从主菜单中选择 Window > Show View > Servers 。当视图打开后，右击空白处并选择 New > Server 。你将要定义一个 JBoss AS 7 服务器，一个GlassFish 3.1 服务器。对于 JBoss AS 7，创建向导面板要求你事先已经下载好了一份 JBoss AS 并解压到硬盘。 GlassFish 3.1 向导面板则提供一个选项，可以自动帮你下载。
 
@@ -435,7 +435,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.464 sec
 ----
-*恭喜你!* 你获得了第一个使用 Arquillian 和远程容器的 *(greenbar)绿条* 。
+*恭喜你!* 你获得了第一个使用 Arquillian 和远程容器的 [.greenbar]*绿条* 。
 
 [NOTE]
 ====
@@ -456,7 +456,7 @@ image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
 最后，右击 `BasketTest` 类，并选择 Run As > JUnit Test。你应该可以在 Console 视图中看到大量活动信息，在 JUnit 视图中显示一个成功的结果。
 
-*恭喜你!* 你又赚到一个 *(greenbar)绿条*。
+*恭喜你!* 你又赚到一个 [.greenbar]*绿条*。
 
 === 调试 Arquillian 测试
 

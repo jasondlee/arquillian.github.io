@@ -133,4 +133,27 @@ class SiteGenerationTest {
         assertTrue(body.contains("Aslak Knutsen"), body);
     }
 
+    /** Confirms the getting-started guide renders the production chapter navigation shell. */
+    @Test
+    void rendersGettingStartedGuideNavigation() {
+        RestAssured.port = 8082;
+        String body = RestAssured.get("/guides/getting_started/").then().statusCode(200).extract().asString();
+        assertTrue(body.contains("Designed exclusively to teach you how to use Arquillian to write real tests."));
+        assertTrue(body.contains("id=\"guides_menu\""));
+        assertTrue(body.contains("<body class=\"guide\">"));
+        assertTrue(body.contains("id=\"toc\""));
+        assertTrue(body.contains("href=\"#_a_closer_look\""));
+        assertTrue(body.contains("<h3 id=\"_a_closer_look\">A Closer Look</h3>"));
+        assertTrue(body.contains("<div class=\"header\">"));
+        assertTrue(body.contains("class=\"admonitionblock note\""));
+        assertTrue(body.contains("class=\"greenbar\""));
+        assertTrue(body.contains("class=\"admonitionblock important\""));
+        assertTrue(body.contains("<h2>Getting Started</h2>"));
+        assertTrue(body.contains("Authors:</strong> Dan Allen"));
+        assertTrue(body.contains("Translations:</strong>"));
+        assertTrue(body.contains("Level:</strong> First Steps"));
+        assertTrue(body.contains("Tags:</strong> cdi, weld, maven, forge, eclipse"));
+        assertTrue(body.contains("Last Update:</strong> Nov 20, 2017"));
+    }
+
 }

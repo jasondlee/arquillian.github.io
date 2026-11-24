@@ -45,16 +45,13 @@ One must first create a new project (preferably in Maven) to compile and package
 
 [NOTE]
 ====
-Arquillian container adapters are usually created with the groupId of @org.jboss.arquillian.container@ , and with an artifactId of @arquillian-{container_acronym}-{managed|remote|embedded}-{container_version}@.
+Arquillian container adapters are usually created with the groupId of `org.jboss.arquillian.container` , and with an artifactId of `arquillian-{container_acronym}-{managed|remote|embedded}-{container_version}`.
 ====
 
 Update the project POM with the following necessary dependencies.
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencyManagement>
     <dependencies>
         <dependency>
@@ -66,7 +63,7 @@ Update the project POM with the following necessary dependencies.
         </dependency>
     </dependencies>
 </dependencyManagement>
-----
+
 <dependencies>
     <dependency>
         <groupId>org.jboss.arquillian.container</groupId>
@@ -77,7 +74,7 @@ Update the project POM with the following necessary dependencies.
         <artifactId>arquillian-container-test-spi</artifactId>
     </dependency>
 </dependencies>
-<!-- clip -->
+----
 
 The `version.arquillian_core` property in the above snippet should match the  version of Arquillian Core that the adapter would be tested and built against.
 
@@ -89,20 +86,21 @@ Additional dependencies will be added in later sections.
 
 The `DeployableContainer` implementation is the heart of a container adapter. Arquillian invokes the methods on the `DeployableContainer` during various points in the test lifecycle. The table below lists the significance of some of these methods:
 
+[cols="1,1"]
 |===
-| setup(T configuration)
-| Sets up the @DeployableContainer@ instance.
-| start()
-| Starts the container. Invoked before the test suite or class begins. Can be invoked manually via a @ContainerController@.
-| stop()
-| Stops the container. Invoked after the test suite or class ends. Can be invoked manually via a @ContainerController@.
-| deploy(org.jboss.shrinkwrap.api.Archive<?> archive)
+| `setup(T configuration)`
+| Sets up the `DeployableContainer` instance.
+| `start()`
+| Starts the container. Invoked before the test suite or class begins. Can be invoked manually via a `ContainerController`.
+| `stop()`
+| Stops the container. Invoked after the test suite or class ends. Can be invoked manually via a `ContainerController`.
+| `deploy(org.jboss.shrinkwrap.api.Archive<?> archive)`
 | Deploys an archive. Invoked before all test methods in a test class.
-| undeploy(org.jboss.shrinkwrap.api.Archive<?> archive)
+| `undeploy(org.jboss.shrinkwrap.api.Archive<?> archive)`
 | Undeploys an archive. Invoked after all the test methods in a test class.
-| deploy(org.jboss.shrinkwrap.descriptor.api.Descriptor descriptor)
+| `deploy(org.jboss.shrinkwrap.descriptor.api.Descriptor descriptor)`
 | Deploys a descriptor (data source, JMS queue, etc). Executed before all the test methods in a test class.
-| undeploy(org.jboss.shrinkwrap.descriptor.api.Descriptor descriptor)
+| `undeploy(org.jboss.shrinkwrap.descriptor.api.Descriptor descriptor)`
 | Undeploys a descriptor. Executed after all the test methods in a test class.
 |===
 
@@ -138,28 +136,22 @@ The snippet below shows how to configure the _Servlet 3.0_ protocol for your con
 
 [source]
 ----
-// clip
 @Override
 public ProtocolDescription getDefaultProtocol() {
     return new ProtocolDescription("Servlet 3.0");
 }
-// clip
 ----
 
 You must also add the project containing the protocol implementation as a Maven dependency to your container adapter project. This will establish the protocol implementation as a transitive dependency for your container. The following snippet shows the addition of the `arquillian-protocol-servlet` artifact to support the Servlet protocol.
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencies>
     <dependency>
         <groupId>org.jboss.arquillian.protocol</groupId>
         <artifactId>arquillian-protocol-servlet</artifactId>
     </dependency>
 </dependencies>
-<!-- clip -->
 ----
 ==== Implement the lifecycle APIs for your adapter
 
@@ -169,14 +161,13 @@ The `setup(T configuration)` method is invoked by Arquillian after initializing 
 
 [source]
 ----
-// clip
 private MyContainerConfiguration config;
-----
+
 @Override
 public void setup(MyContainerConfiguration configuration) {
     this.configuration = configuration;
 }
-// clip
+----
 
 Method implementations are often limited to storing the `ContainerConfiguration` argument for future use by the container adapter in other parts of the adapter lifecycle, as shown in the above snippet.
 
@@ -229,11 +220,7 @@ A container adapter declares the default set of test enrichers as classpath depe
 
 [source]
 ----
-[source]
-----
-<!-- clip -->
 <dependencies>
-----
     <!-- For @Inject annotations -->
     <dependency>
         <groupId>org.jboss.arquillian.testenricher</groupId>
@@ -259,7 +246,7 @@ A container adapter declares the default set of test enrichers as classpath depe
     </dependency>
 
 </dependencies>
-<!-- clip -->
+----
 
 By including the dependencies as shown in the above snippet, the following extensions would be discovered by Arquillian at the time of test execution:
 
@@ -285,8 +272,6 @@ public class MyContainerExtension implements LoadableExtension {
 ----
 Finally, the container adapter extension needs to be registered using the SPI registration mechanism. You must create a file named org.jboss.arquillian.core.spi.LoadableExtension as shown below and put the fully qualified class name of the class implementing the `LoadableExtension` SPI on the first line.
 
-[source]
-----
 [source]
 ----
 org.jboss.arquillian.container.guide.spi.MyContainerExtension

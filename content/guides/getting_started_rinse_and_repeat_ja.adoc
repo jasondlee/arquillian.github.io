@@ -377,7 +377,7 @@ Arquillianは、コンテナが起動していると期待しています。従�
 
 リモートコンテナを管理する簡単な方法は、IDEで設定することです。もし読者がコマンドライン好きであれば、このステップは飛ばして、適当な起動スクリプトで起動することもできます。
 
-ここではEclipseに、サーバー（コンテナ）の設定の追加方法を説明します。このプロセスは、他のIDEでも同様です。Eclipseでは、 link:http://jboss.org/tools[JBoss Tools] とGlassFish Java EE Application Server Pluginが必要で、両方ともEclipse MarketPlaceから入手できます。
+ここではEclipseに、サーバー（コンテナ）の設定の追加方法を説明します。このプロセスは、他のIDEでも同様です。Eclipseでは、 https://jboss.org/tools[JBoss Tools] とGlassFish Java EE Application Server Pluginが必要で、両方ともEclipse MarketPlaceから入手できます。
 
 Eclipseでは、メニューバーからWindow > Show View > Serversを選択してください。ビューを開いたら、右クリックして、New > Serverを選択してください。一つはJBoss AS 7、もう一つはGlassFish 3.1を設定したいでしょう。JBoss AS 7については、ウィザードは読者がすでにダウンロード、展開したJBoss AS 7ランタイムが必要です。GlassFish 3.1ウィザードでは、ディストリビューションの自動ダウンロードも選択できます。
 
@@ -435,7 +435,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.464 sec
 ----
-*おめでとう！* リモートコンテナを使ったArquillianの最初の *(greenbar)グリーンバー* が表示されました。
+*おめでとう！* リモートコンテナを使ったArquillianの最初の [.greenbar]*グリーンバー* が表示されました。
 
 [NOTE]
 ====
@@ -456,7 +456,7 @@ image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
 最後に、 `BasketTest` を右クリックし、Run As > JUnit Testを選択します。コンソールビューでは、実行状況が流れ、成功との結果が、JUnitビューに表示されます。
 
-*おめでとう！* 二つめの *(greenbar)グリーンバー* です！
+*おめでとう！* 二つめの [.greenbar]*グリーンバー* です！
 
 === Arquillianテストのデバッグ
 
@@ -496,11 +496,11 @@ Arquillianがコンテナの起動と停止を制御しているので、コン�
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-7-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.0.2.Final</property>

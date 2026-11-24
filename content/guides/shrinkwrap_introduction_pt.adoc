@@ -78,11 +78,11 @@ No Maven, isso pode ser definido facilmente através de escopos adequados usando
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -106,11 +106,11 @@ O ShrinkWrap executa na Runtime do Java 5 ou superior, mas necessita pelo menos 
 
 ==== Documentação da API
 
-O JavaDoc de cada versão está localizado link:http://docs.jboss.org/shrinkwrap[aqui] .
+O JavaDoc de cada versão está localizado https://docs.jboss.org/shrinkwrap[aqui] .
 
 ==== Código fonte aberto
 
-Faça um fork do projeto e participe do link:http://github.com/shrinkwrap/shrinkwrap[Desenvolvimento] .
+Faça um fork do projeto e participe do https://github.com/shrinkwrap/shrinkwrap[Desenvolvimento] .
 
 === Criação de arquivos (empacotamento)
 

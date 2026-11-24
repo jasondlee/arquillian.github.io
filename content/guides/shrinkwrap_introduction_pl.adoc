@@ -78,11 +78,11 @@ Jeśli korzystasz z mavena, możesz osiągnąć to w prosty sposób korzystając
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -106,11 +106,11 @@ ShrinkWrap może być uruchomiony w środowisku Java 5 lub wyższym, ale wymaga 
 
 ==== Dokumentacja API
 
-JavaDoc dla każdego wydania można znaleźć link:http://docs.jboss.org/shrinkwrap[tutaj] .
+JavaDoc dla każdego wydania można znaleźć https://docs.jboss.org/shrinkwrap[tutaj] .
 
 ==== Open Source Coding
 
-Sklonuj projekt i zaangażuj się w jego link:http://github.com/shrinkwrap/shrinkwrap[rozwój] .
+Sklonuj projekt i zaangażuj się w jego https://github.com/shrinkwrap/shrinkwrap[rozwój] .
 
 === Tworzenie Archiwów
 

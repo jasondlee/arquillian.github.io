@@ -361,7 +361,7 @@ El adaptador para GlassFish remoto utiliza Jersey para comunicarse con el conten
 
 Una vez que has añadido los perfiles al pox.xml, haz click con el botón derecho en el proyecto de Eclipse y selecciona Maven > Update Project Configuration. Si el proyecto te da errores de compilación entonces tienes que activar uno de los perfiles.
 
-Recuerda que hay dos maneras de activar un perfil de Maven en Eclipse (dando por hecho que estás usando link:http://www.eclipse.org/m2e):[Maven Integration for Eclipse]
+Recuerda que hay dos maneras de activar un perfil de Maven en Eclipse (dando por hecho que estás usando https://www.eclipse.org/m2e):[Maven Integration for Eclipse]
 
 # Configuración manual (aproximación estándar)
 # Selector de perfiles de Maven (JBoss Tools)
@@ -374,7 +374,7 @@ Los adaptadores de contenedores remotos esperan que los contenedores estén arra
 
 La manera más sencilla de administrar un contenedor remoto es configurarlo en el IDE. Si eres más de línea de comandos puedes saltarte este paso y arrancar los servidores usando los scripts de arranque apropiados.
 
-Vamos a mostrarte cómo añadir los controles del servidor (contenedor) en Eclipse. El proceso es similar en otros IDEs. Para Eclipse necesitas tanto link:http://jboss.org/tools[JBoss Tools] como link:http://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics.[GlassFish Java EE Application Server Plugin] Ambos están disponibles en el Eclipse MarketPlace.
+Vamos a mostrarte cómo añadir los controles del servidor (contenedor) en Eclipse. El proceso es similar en otros IDEs. Para Eclipse necesitas tanto https://jboss.org/tools[JBoss Tools] como https://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics.[GlassFish Java EE Application Server Plugin] Ambos están disponibles en el Eclipse MarketPlace.
 
 En Eclipse selecciona Window  > Show View > Servers en la barra de menu principal. Una vez que se abra la vista, haz click con el botón derecho y selecciona New > Server. Crea un control para servidores JBoss AS 7.1:
 
@@ -420,7 +420,7 @@ Una vez que esté arrancado y funcionando activa el perfil de Maven `arquillian-
 
 image::/images/guides/arquillian_tutorial_2_jbossas_profile_selection.png[]
 
-Finalmente haz click con el botón derecho sobre la clase `BasketTest` y selecciona Run As > JUnit Test. Deberías ver una actividad frenética en la consola y después... ¡ *(greenbar)Barra verde* en la vista de JUnit!
+Finalmente haz click con el botón derecho sobre la clase `BasketTest` y selecciona Run As > JUnit Test. Deberías ver una actividad frenética en la consola y después... ¡ [.greenbar]*Barra verde* en la vista de JUnit!
 
 También puedes ejecutar el test en la línea de comandos utilizando Maven:
 
@@ -439,7 +439,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.844 sec
 ----
-*¡Enhorabuena!* Te has ganado tu primera *(greenbar)barra verde* usando un contenedor remoto con Arquillian.
+*¡Enhorabuena!* Te has ganado tu primera [.greenbar]*barra verde* usando un contenedor remoto con Arquillian.
 
 [NOTE]
 ====
@@ -458,7 +458,7 @@ Una vez que esté arrancado y funcionando activa el perfil de Maven `arquillian-
 
 image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
-Finalmente haz click con el botón derecho sobre la clase `BasketTest` y selecciona Run As > JUnit Test. Deberías ver una actividad frenética en la consola y después... ¡Una *(greenbar)barra verde* en la vista de JUnit!
+Finalmente haz click con el botón derecho sobre la clase `BasketTest` y selecciona Run As > JUnit Test. Deberías ver una actividad frenética en la consola y después... ¡Una [.greenbar]*barra verde* en la vista de JUnit!
 
 También puedes ejecutar el test en la línea de comandos usando Maven:
 
@@ -477,7 +477,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.549 sec
 ----
-*¡Enhorabuena!* Te has ganado otra  *(greenbar)barra verde*.
+*¡Enhorabuena!* Te has ganado otra  [.greenbar]*barra verde*.
 
 Deberías también poder ejecutar el test en el GlassFish Embebido usando el perfil que preparaste en la guía anterior. Inténtalo. Deberías también poder depurar el test fácilmente.
 
@@ -554,11 +554,11 @@ Esta es la configuración que tienes que añadir al descriptor de configuración
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -602,11 +602,11 @@ Algunas veces necesitas un poco más de información sobre lo que Arquillian des
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <engine>
         <property name="deploymentExportPath">target/deployments</property>
     </engine>

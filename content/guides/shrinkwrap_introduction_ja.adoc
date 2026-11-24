@@ -78,11 +78,11 @@ Mavenでは、ShrinkWrap依存チェーンPOMを利用することで簡単に�
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -106,11 +106,11 @@ ShrinkWrapはJava5以上のランタイムであれば実行できますが、�
 
 ==== APIドキュメント
 
-各リリースのJavaDocは、 link:http://docs.jboss.org/shrinkwrap[ここ] にあります。
+各リリースのJavaDocは、 https://docs.jboss.org/shrinkwrap[ここ] にあります。
 
 ==== オープンソースコーディング
 
-フォークして link:http://github.com/shrinkwrap/shrinkwrap[開発] に参加してください。
+フォークして https://github.com/shrinkwrap/shrinkwrap[開発] に参加してください。
 
 === アーカイブの作成
 

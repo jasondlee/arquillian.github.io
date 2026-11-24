@@ -39,8 +39,6 @@ What resulted was a Java API analouge to the "jar" tool, a virtual filesystem wi
 
 [source]
 ----
-[source]
-----
 JavaArchive archive = ShrinkWrap.create(JavaArchive.class,"myarchive.jar")
    .addClasses(MyClass.class, MyOtherClass.class)
    .addResource("mystuff.properties");
@@ -76,15 +74,12 @@ In Maven, these may be brought in under the proper scopes easily by using the Sh
 
 [source]
 ----
-[source]
-----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
-----
   <dependency>
     <groupId>org.jboss.shrinkwrap</groupId>
     <artifactId>shrinkwrap-depchain</artifactId>
@@ -94,6 +89,7 @@ In Maven, these may be brought in under the proper scopes easily by using the Sh
 
   <!-- snip -->
 </project>
+----
 
 For projects outside use of the Maven repository system, the ShrinkWrap Distribution makes all modules available as a download, and you may set up the dependencies manually to suit your needs.
 
@@ -106,48 +102,50 @@ ShrinkWrap may run on any Java5 runtime or higher, but requires at least JDK6 fo
 
 ==== API Documentation
 
-JavaDoc for each release is located link:http://docs.jboss.org/shrinkwrap[here] .
+JavaDoc for each release is located https://docs.jboss.org/shrinkwrap[here] .
 
 ==== Open Source Coding
 
-Fork us and get involved with link:http://github.com/shrinkwrap/shrinkwrap[Development] .
+Fork us and get involved with https://github.com/shrinkwrap/shrinkwrap[Development] .
 
 === Archive Creation
 
 The primary entry point to the ShrinkWrap library is the `org.jboss.shrinkwrap.api.ShrinkWrap` class.  From here you may call the `create` method to make a new `Archive`, the a generic view of the virtual filesystem which allows the addition of content called `Asset` s into a location called an `ArchivePath`.  The following table more easily shows ShrinkWrap nomenclature next to more common terms:
 
+[cols="1,3,4"]
 |===
 | Common Term
 | ShrinkWrap Class
 | Description
 | Archive
-| @org.jboss.shrinkwrap.api.Archive@
+| `org.jboss.shrinkwrap.api.Archive`
 | A collection of resources, essentially a virtual filesystem
 | File
-| @org.jboss.shrinkwrap.api.Node@
-| An entry in an @Archive@; may represent content or a directory
+| `org.jboss.shrinkwrap.api.Node`
+| An entry in an `Archive`; may represent content or a directory
 | Path
-| @org.jboss.shrinkwrap.api.ArchivePath@
-| Location in an @Archive@ under which a @Node@ lives
+| `org.jboss.shrinkwrap.api.ArchivePath`
+| Location in an `Archive` under which a `Node` lives
 | Asset
-| @org.jboss.shrinkwrap.api.Asset@
-| Byte-based content within a @Node@
+| `org.jboss.shrinkwrap.api.Asset`
+| Byte-based content within a `Node`
 |===
 
 Additionally, `Archive` s have many views, and you won't typically be dealing with the `Archive` class directly.  Instead, ShrinkWrap supplies a few `Archive` extensions which offer helpful ways of manipulating content relevant to their type.
 
+[cols="1,1"]
 |===
 | Archive Type
 | Description
-| @org.jboss.shrinkwrap.api.GenericArchive@
-| Simplest type of concrete user-view of an @Archive@; supports generic operations
-| @org.jboss.shrinkwrap.api.spec.JavaArchive@
-| JAR type; allows addition of @Class@ es, @Package@ s, and Manifest operations
-| @org.jboss.shrinkwrap.api.spec.EnterpriseArchive@
+| `org.jboss.shrinkwrap.api.GenericArchive`
+| Simplest type of concrete user-view of an `Archive`; supports generic operations
+| `org.jboss.shrinkwrap.api.spec.JavaArchive`
+| JAR type; allows addition of `Class` es, `Package` s, and Manifest operations
+| `org.jboss.shrinkwrap.api.spec.EnterpriseArchive`
 | Java EE EAR type; supports Manifest and related spec operations
-| @org.jboss.shrinkwrap.api.spec.WebArchive@
+| `org.jboss.shrinkwrap.api.spec.WebArchive`
 | Java EE WAR type; supports operations common to web application deployments
-| @org.jboss.shrinkwrap.api.spec.ResourceAdaptorArchive@
+| `org.jboss.shrinkwrap.api.spec.ResourceAdaptorArchive`
 | Java EE RAR type; supports operations common to resource adaptor deployments
 |===
 
@@ -163,30 +161,31 @@ That's it!  You've got your first ShrinkWrap archive!
 
 Of course, an object representing an empty archive is pretty useless.  So let's have a look at adding in some content.  As we noted before, content is modeled by the `Asset` class, so let's first take a look at some of the `Asset` implementations provided by ShrinkWrap:
 
+[cols="1,1"]
 |===
 | Asset
 | Represents
-| @org.jboss.shrinkwrap.api.asset.ArchiveAsset@
-| Nested @Archive@ content
-| @org.jboss.shrinkwrap.api.asset.ByteArrayAsset@
-| @byte[]@ or @InputStream@ content
-| @org.jboss.shrinkwrap.api.asset.ClassAsset@
-| Java @Class@ content
-| @org.jboss.shrinkwrap.api.asset.ClassLoaderAsset@
-| A resource which can be loaded by an optionally-specified @ClassLoader@
-| @org.jboss.shrinkwrap.api.asset.FileAsset@
-| @File@ content
-| @org.jboss.shrinkwrap.api.asset.StringAsset@
-| @String@ content
-| @org.jboss.shrinkwrap.api.asset.UrlAsset@
-| Content located at a given @URL@
-| @org.jboss.shrinkwrap.api.asset.EmptyAsset@
+| `org.jboss.shrinkwrap.api.asset.ArchiveAsset`
+| Nested `Archive` content
+| `org.jboss.shrinkwrap.api.asset.ByteArrayAsset`
+| `byte[]` or `InputStream` content
+| `org.jboss.shrinkwrap.api.asset.ClassAsset`
+| Java `Class` content
+| `org.jboss.shrinkwrap.api.asset.ClassLoaderAsset`
+| A resource which can be loaded by an optionally-specified `ClassLoader`
+| `org.jboss.shrinkwrap.api.asset.FileAsset`
+| `File` content
+| `org.jboss.shrinkwrap.api.asset.StringAsset`
+| `String` content
+| `org.jboss.shrinkwrap.api.asset.UrlAsset`
+| Content located at a given `URL`
+| `org.jboss.shrinkwrap.api.asset.EmptyAsset`
 | Empty (0-byte) content
 |===
 
 Additionally, because `Asset` is an interface, you may provide your own implementation to supply any byte-based content that may be represented as an `InputStream` .  For instance, the snippet below shows how to present an Activation Framework `DataSource` as an `Asset` :
 
-[source]
+[source,java]
 ----
 final DataSource dataSource = null; // Assume you have this
   Asset asset = new Asset() {
@@ -225,6 +224,7 @@ ShrinkWrap supports a simple mechanism allowing you to switch "views" of your ar
 myArchive.as(JavaArchive.class).addClasses(String.class, Integer.class);
 System.out.println(myArchive.toString(true));
 ----
+
 [source,output]
 ----
 archive.jar:
@@ -261,27 +261,29 @@ So let's see what's going on here.  First we create a `JavaArchive` and add all 
 
 There are 3 types of exporters which ship with ShrinkWrap:
 
+[cols="1,1"]
 |===
 | Exporter
 | Output Format
-| @org.jboss.shrinkwrap.api.exporter.TarExporter@
+| `org.jboss.shrinkwrap.api.exporter.TarExporter`
 | TAR
-| @org.jboss.shrinkwrap.api.exporter.TarGzExporter@
+| `org.jboss.shrinkwrap.api.exporter.TarGzExporter`
 | TAR.GZ
-| @org.jboss.shrinkwrap.api.exporter.ZipExporter@
+| `org.jboss.shrinkwrap.api.exporter.ZipExporter`
 | ZIP
 |===
 
 Of course, we can also obtain a ShrinkWrap archive from a flat-file in a similar fashion by using one of the standard importers:
 
+[cols="1,1"]
 |===
 | Importer
 | Output Format
-| @org.jboss.shrinkwrap.api.importer.TarImporter@
+| `org.jboss.shrinkwrap.api.importer.TarImporter`
 | TAR
-| @org.jboss.shrinkwrap.api.importer.TarGzImporter@
+| `org.jboss.shrinkwrap.api.importer.TarGzImporter`
 | TAR.GZ
-| @org.jboss.shrinkwrap.api.importer.ZipImporter@
+| `org.jboss.shrinkwrap.api.importer.ZipImporter`
 | ZIP
 |===
 

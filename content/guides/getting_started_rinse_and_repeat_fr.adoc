@@ -376,7 +376,7 @@ Arquillian suppose que le conteneur distant est démarré. Pour ce faire, nous a
 
 Le moyen le plus simple de gérer un conteneur distant est de le configurer au sein de votre IDE. Si vous vous sentez plus proche d'un fan des lignes de commande, vous pouvez sauter cette section et démarrer vos serveurs en utilisant les scripts de démarrage appropriés.
 
-Nous allons vous montrer comment ajouter le contrôle d'un serveur (notre conteneur) au sein d'Eclipse. Le processus est similaire sur les autres IDE. Pour Eclipse, vous aurez besoin des plugins link:http://jboss.org/tools[JBoss Tools] et GlassFish Java EE Application Server Plugin, tous deux disponibles sur le MarketPlace Eclipse.
+Nous allons vous montrer comment ajouter le contrôle d'un serveur (notre conteneur) au sein d'Eclipse. Le processus est similaire sur les autres IDE. Pour Eclipse, vous aurez besoin des plugins https://jboss.org/tools[JBoss Tools] et GlassFish Java EE Application Server Plugin, tous deux disponibles sur le MarketPlace Eclipse.
 
 Dans Eclipse, sélectionnez Window > Show View > Servers dans le menu supérieur. Une fois la vue ouverte, clic-droit et choisissez New > Server. Vous devrez alors définir un serveur JBoss AS 7 et un serveur GlassFish 3.1. Pour JBoss AS 7, la procédure nécessite que vous ayez déjà téléchargé et extrait le runtime JBoss AS 7. Dans le cas de GlassFish 3.1, vous aurez la possibilité de télécharger automatiquement la distribution du serveur.
 
@@ -434,7 +434,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.464 sec
 ----
-*Félicications !* Vous venez de remporter votre première *(greenbar)barre verte* avec Arquillian en utilisant un conteneur distant.
+*Félicications !* Vous venez de remporter votre première [.greenbar]*barre verte* avec Arquillian en utilisant un conteneur distant.
 
 [NOTE]
 ====
@@ -455,7 +455,7 @@ image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
 Pour terminer, clic-droit sur la classe `BasketTest` et sélectionnez Run as > JUnit Test. Vous devriez voir une avalanche d'activité dans la vue Console et un résultat réussi dans la vue JUnit.
 
-*Félicitations !* Vous venez de remporter une nouvelle *(greenbar)barre verte*.
+*Félicitations !* Vous venez de remporter une nouvelle [.greenbar]*barre verte*.
 
 === Déboguer le test Arquillian
 
@@ -495,11 +495,11 @@ Ci-dessous la configuration qu'il faudra ajouter au fichier de configuration d'A
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>

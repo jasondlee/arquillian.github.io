@@ -70,7 +70,7 @@ Get your self going with ARQ.
 
 Here's the directory structure:
 
-(filetree)* src/
+* src/
 ** test/
 *** java/
 **** MyTest.java - This is the Arquillian test
@@ -96,11 +96,11 @@ This is the warning text.
 
 [source]
 ----
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app version="3.0" xmlns="https://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://java.sun.com/xml/ns/javaee
-        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+        https://java.sun.com/xml/ns/javaee
+        https://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

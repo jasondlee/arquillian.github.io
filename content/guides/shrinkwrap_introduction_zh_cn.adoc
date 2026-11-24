@@ -78,11 +78,11 @@ image::/images/guides/shrinkwrap_runas_junit.png[]
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -106,11 +106,11 @@ ShrinkWrap 可以运行任何 Java 5 或者更高的运行环境，但是编译�
 
 ==== API 文档
 
-每个发布版本的 JavaDoc 在 link:http://docs.jboss.org/shrinkwrap[这里] 。
+每个发布版本的 JavaDoc 在 https://docs.jboss.org/shrinkwrap[这里] 。
 
 ==== 开放编码
 
-Fork 我们，并参与 link:http://github.com/shrinkwrap/shrinkwrap[开发] 。
+Fork 我们，并参与 https://github.com/shrinkwrap/shrinkwrap[开发] 。
 
 === 归档文件的创建
 

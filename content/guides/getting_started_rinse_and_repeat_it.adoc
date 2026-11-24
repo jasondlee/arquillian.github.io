@@ -361,7 +361,7 @@ L'adapter remoto di GlassFish usa Jersey per comunicare con il container tramite
 
 Una volta aggiunti i profili nel pom.xml, clicchiamo con il tasto destro sul progetto in Eclipse e selezioniamo Maven > Update Project Configuration. Se il progetto mostra errori di compilazione, dobbiamo attivare uno dei due profili.
 
-Ricordiamoci che ci sono due modi per attivare un profilo Maven in Eclipse (presupponendo che stiamo usando il plugin link:http://www.eclipse.org/m2e):[Maven Integration for Eclipse]
+Ricordiamoci che ci sono due modi per attivare un profilo Maven in Eclipse (presupponendo che stiamo usando il plugin https://www.eclipse.org/m2e):[Maven Integration for Eclipse]
 
 # Configurazione manuale (approccio standard)
 # selettore del profilo Maven (JBoss Tools)
@@ -374,7 +374,7 @@ Gli adapter per il container remoto si aspettano che il container sia avviato. P
 
 Il modo più semplice per gestire i container remoti è di configurarli all'interno dell'IDE. Se vi sentite più a vostro agio con la riga di comando, potete saltare questo passaggio e lanciare il server utilizzando il rispettivo script di lancio.
 
-Mostriamo ora come aggiungere i controlli del server (container) in Eclipse. Il processo è simile per gli altri IDE. Con Eclipse, abbiamo bisogno sia di link:http://jboss.org/tools[JBoss Tools] che di link:http://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics,[GlassFish Java EE Application Server Plugin] entrambi disponibili nel MarketPlace di Eclipse.
+Mostriamo ora come aggiungere i controlli del server (container) in Eclipse. Il processo è simile per gli altri IDE. Con Eclipse, abbiamo bisogno sia di https://jboss.org/tools[JBoss Tools] che di https://marketplace.eclipse.org/content/glassfish-java-ee-application-server-plugin-eclipse/metrics,[GlassFish Java EE Application Server Plugin] entrambi disponibili nel MarketPlace di Eclipse.
 
 Da Eclipse, selezioniamo Window > Show View > Servers dalla barra principale. Una volta aperta la finestra, tasto destro e selezioniamo New > Server. Creiamo un controllore del server per JBoss AS 7.1:
 
@@ -420,7 +420,7 @@ Una volta che JBoss è avviato, attiviamo il profilo Maven `arquillian-jbossas-r
 
 image::/images/guides/arquillian_tutorial_2_jbossas_profile_selection.png[]
 
-Infine, tasto destro sulla classe `BasketTest` e selezioniamo Run As > JUnit Test. Si dovrebbe vedere una serie di attività nella Console e poi...una *(greenbar)barra verde* nella vista di JUnit!
+Infine, tasto destro sulla classe `BasketTest` e selezioniamo Run As > JUnit Test. Si dovrebbe vedere una serie di attività nella Console e poi...una [.greenbar]*barra verde* nella vista di JUnit!
 
 È anche possibile lanciare il test dalla riga di comando con Maven:
 
@@ -439,7 +439,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.844 sec
 ----
-*Congratulazioni!* È stata eseguita la nostra prima  *(greenbar)barra verde* con Arquillian usando un container remoto.
+*Congratulazioni!* È stata eseguita la nostra prima  [.greenbar]*barra verde* con Arquillian usando un container remoto.
 
 [NOTE]
 ====
@@ -458,7 +458,7 @@ Una volta che GlassFish è avviato, attiviamo il profilo Maven `arquillian-glass
 
 image::/images/guides/arquillian_tutorial_2_glassfish_profile_selection.png[]
 
-Infine, tasto destro sulla classe `BasketTest` e selezioniamo Run As > JUnit Test. Si dovrebbe vedere una serie di attività nella Console e poi... una *(greenbar)barra verde* nella vista di JUnit!
+Infine, tasto destro sulla classe `BasketTest` e selezioniamo Run As > JUnit Test. Si dovrebbe vedere una serie di attività nella Console e poi... una [.greenbar]*barra verde* nella vista di JUnit!
 
 È anche possibile lanciare il test dalla riga di comando con Maven:
 
@@ -477,7 +477,7 @@ Running org.arquillian.example.BasketTest
 ...
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.549 sec
 ----
-*Congratulazioni!* Ecco un'altra *(greenbar)barra verde*
+*Congratulazioni!* Ecco un'altra [.greenbar]*barra verde*
 
 Dovremmo aver modo di lanciare il test anche sul profilo Embedded GlassFish configurato nella guida precedente. Proviamo ad eseguirlo. È anche possibile eseguire il debug molto facilmente.
 
@@ -554,11 +554,11 @@ Qui c'è la configurazione che dobbiamo aggiungere al descrittore di Arquillian,
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -602,11 +602,11 @@ A volte è necessario avere fisicamente il pacchetto di deploy disponibile per p
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <engine>
         <property name="deploymentExportPath">target/deployments</property>
     </engine>

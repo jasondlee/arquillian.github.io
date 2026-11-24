@@ -20,14 +20,14 @@ Tieto všetky schopnosti sa naučíte jednoduchým začlenením Arquillianu do v
 
 === Predpoklady
 
-Najjednoduchší spôsob, ako začať s Arquillianom, je jeho začlenenie do testovacej infraštruktúry projektu, ktoý ponúka riadenie závislostí. Najrozšírenejším nástrojom v tejto kategórii je link:http://maven.apache.org.[Apache Maven] Tento návod vás prevedie vaším prvým *(greenbar)úspešným testom* používajúc nový Maven projekt.
+Najjednoduchší spôsob, ako začať s Arquillianom, je jeho začlenenie do testovacej infraštruktúry projektu, ktoý ponúka riadenie závislostí. Najrozšírenejším nástrojom v tejto kategórii je https://maven.apache.org.[Apache Maven] Tento návod vás prevedie vaším prvým [.greenbar]*úspešným testom* používajúc nový Maven projekt.
 
 [NOTE]
 ====
 Arquillian nezávisí na projekte Maven ani na žiadnom inom nástroji pre tento účel. Pracuje rovnako dobre--ak nie lepšie--s nástrojom Ant alebo Gradle. V ideálnom prípade by nástroj tohoto typu mal ponúkať riadenie závislostí pretože zjednodušuje začlenenie Arquillian knižníc ktoré sú distribuované cez "Maven Central repozitár":maven_search.
 ====
 
-Tento návod predpokladá, že máte nainštalovaný Maven, buď ako samostatný program spúšťatelný cez príkazový riadok alebo integrovaný vo vašom IDE. Ak Maven nie je vo vašom systéme k dispozícii, prosím link:http://maven.apache.org/download.html.[stiahnite a nainštalujte Maven teraz] Taktiež budete potrebovať link:http://www.oracle.com/technetwork/java/javase/downloads[JDK(Java Development Kit)] verzie 1.5 alebo vyššej. Preferovaná verzia JDK je 1.6.
+Tento návod predpokladá, že máte nainštalovaný Maven, buď ako samostatný program spúšťatelný cez príkazový riadok alebo integrovaný vo vašom IDE. Ak Maven nie je vo vašom systéme k dispozícii, prosím https://maven.apache.org/download.html.[stiahnite a nainštalujte Maven teraz] Taktiež budete potrebovať https://www.oracle.com/technetwork/java/javase/downloads[JDK(Java Development Kit)] verzie 1.5 alebo vyššej. Preferovaná verzia JDK je 1.6.
 
 === Vytvorenie nového projektu
 
@@ -36,7 +36,7 @@ Existujú dva nami odporúčané spôsoby, ako vytvoriť nový Maven projekt:
 # link:#generate_project_from_archetype[Vytvorenie projektu z Maven archetypu]
 # link:#create_project_using_forge[Vytvorenie a prispôsobenie projektu nástrojom JBoss Forge]
 
-Vytvorenie projektu nástrojom link:http://jboss.org/forge[JBoss Forge] je jednoduchší spôsob, ale v tomto návode si ukážeme obe možnosti, v prípade, že nie ste pripravení používať JBoss Forge. Prosím, vyberte jednu z dvoch ponúkaných možností pre ďalšie inštrukcie.
+Vytvorenie projektu nástrojom https://jboss.org/forge[JBoss Forge] je jednoduchší spôsob, ale v tomto návode si ukážeme obe možnosti, v prípade, že nie ste pripravení používať JBoss Forge. Prosím, vyberte jednu z dvoch ponúkaných možností pre ďalšie inštrukcie.
 
 [NOTE]
 ====
@@ -70,7 +70,7 @@ Y: : <ENTER>
 ----
 Tento príkaz vygeneruje Maven projekt v adresári `arquillian-tutorial`, ktorý je v adresári, kde sa práve nachádzate. Vstúpte do tohoto adresára. Súborová štruktúra projektu vyzerá približne rovnako ako na nasledujúcom výpise.
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - Adresár, kde sú všetky Java zdrojové kódy (pod Java balíkom)
 *** resources/ - Adresár pre všetky konfiguračné súbory
@@ -100,11 +100,11 @@ Arquillian podporuje aj testovací framework TestNG 5. V tomto návode si však 
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://maven.apache.org/POM/4.0.0
-        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        https://maven.apache.org/POM/4.0.0
+        https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 ----
     <groupId>org.arquillian.example</groupId>
@@ -113,7 +113,7 @@ Arquillian podporuje aj testovací framework TestNG 5. V tomto návode si však 
     <packaging>jar</packaging>
 
     <name>arquillian-tutorial</name>
-    <url>http://arquillian.org</url>
+    <url>https://arquillian.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -167,18 +167,18 @@ Otvorte ešte raz súbor `pom.xml` a pridajte nasledujúci XML fragment priamo d
 </dependencies>
 <!-- clip -->
 ----
-p(important). %Artefakt `org.jboss.spec:jboss-javaee-6.0` zahŕňa len štandardné Java EE 6 API. *Odporúča sa nepoužívať* Java EE API artefakty s koordináciami `javax:javaee-api`. Artefakt obsahuje triedy, ktoré majú prázdne telá metód. Tento fakt spôsobí, že sa stretnete s obskurnými chybami ako Absent Code ak bude tento artefakt na classpath v čase behu programu (rovnako aj pri behu testov). link:https://community.jboss.org/wiki/WhatsTheCauseOfThisExceptionJavalangClassFormatErrorAbsentCode[Prečítajte si tento FAQ dokument] pre viac informácii.%
+p(important). %Artefakt `org.jboss.spec:jboss-javaee-6.0` zahŕňa len štandardné Java EE 6 API. *Odporúča sa nepoužívať* Java EE API artefakty s koordináciami `javax:javaee-api`. Artefakt obsahuje triedy, ktoré majú prázdne telá metód. Tento fakt spôsobí, že sa stretnete s obskurnými chybami ako Absent Code ak bude tento artefakt na classpath v čase behu programu (rovnako aj pri behu testov). https://community.jboss.org/wiki/WhatsTheCauseOfThisExceptionJavalangClassFormatErrorAbsentCode[Prečítajte si tento FAQ dokument] pre viac informácii.%
 
 Základy vášho projektu sú hotové! Preskočte na ďalšiu sekciu, link:#open_the_project_in_eclipse[Otvorenie projektu v Eclipse] a môžete začať programovať!
 
 [#create_project_using_forge]
 ==== Vytvorenie projektu cez Forge
 
-link:http://jboss.org/forge[JBoss Forge] je príkazový riadok pre veľmi rýchle vyvíjanie aplikácii v štandardizovanom prostredí. Pre lepšie pochopenie filozofie Forge si predstavte Maven archetypy na steroidoch ~:)
+https://jboss.org/forge[JBoss Forge] je príkazový riadok pre veľmi rýchle vyvíjanie aplikácii v štandardizovanom prostredí. Pre lepšie pochopenie filozofie Forge si predstavte Maven archetypy na steroidoch ~:)
 
 Inštalácia JBoss Forge je relatívne krátky proces a tento návod vám predstaví len jeho úplné základy. Nasledujte tieto jednoduché kroky, ktoré vás prevedú inštaláciou:
 
-# link:http://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Stiahnite Forge]
+# https://downloads.jboss.org/forge/releases/3.4.0.Final/forge-distribution-3.4.0.Final-offline.zip[Stiahnite Forge]
 # Rozbaľte archív do priečinku na vašom disku. Na tento priečinok sa budeme odkazovať ako `$FORGE_HOME`
   Predpokladáme, že ste rozbalili archív do priečinku s menom `forge` vo vašom domovskom adresári
 # Pridajte premennú `$FORGE_HOME/bin` do premennej PATH na Linuxe alebo zabezpečte, aby vás operačný systém rozpoznal spúšťatelné súbory v tomto adresári (Windows, Mac OSX)
@@ -221,7 +221,7 @@ Tento príkaz vygeneruje Java projekt s Maven infraštruktúrou a nový priečin
 
 Štruktúra projektu, ktorý vygeneroval Forge, je nasledujúca:
 
-(filetree)* src/
+* src/
 ** main/
 *** java/ - Adresár, kde sú všetky Java zdrojové kódy (pod Java balíkom)
 *** resources/ - Adresár pre všetky konfiguračné súbory
@@ -255,7 +255,7 @@ Forge pridá JBoss Community repozitár do súboru pom.xml. Tento repozitár nie
 
 [source,command]
 ----
-$ project-remove-repository --url http://repository.jboss.org/nexus/content/groups/public
+$ project-remove-repository --url https://repository.jboss.org/nexus/content/groups/public
 ----
 Výsledné pom.xml, tak ako ho vygeneruje Forge, vyzerá nasledujúco:
 
@@ -264,11 +264,11 @@ Výsledné pom.xml, tak ako ho vygeneruje Forge, vyzerá nasledujúco:
 [source]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="
-        http://maven.apache.org/POM/4.0.0
-        http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        https://maven.apache.org/POM/4.0.0
+        https://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.arquillian.example</groupId>
     <artifactId>arquillian-tutorial</artifactId>
@@ -310,11 +310,11 @@ Základy vášho projektu sú hotové! Otvorte projekt v Eclipse a môžeme zač
 
 Pri vývoji Java projektu je pravdepodobné, že používate IDE ako je Eclipse. Práve preto bol Arquillian navrhnutý tak, aby sa s rôznymi IDE používal ľahko. Môžete spúšťať Arquillian testy z vášho IDE bez nejakej špeciálnej konfigurácie. Začnime využívať výhody, ktoré nám prináša IDE, hneď teraz.
 
-Začneme spustením Eclipse. Pretože sme vytvorili projekt založený na projekte Mavem, potrebujete link:http://eclipse.org/m2e,[integrovať Maven s Eclipse] tzv. m2e plugin. Po jeho nainštalovaní jednoducho importujete vytvorený Maven projekt.
+Začneme spustením Eclipse. Pretože sme vytvorili projekt založený na projekte Mavem, potrebujete https://eclipse.org/m2e,[integrovať Maven s Eclipse] tzv. m2e plugin. Po jeho nainštalovaní jednoducho importujete vytvorený Maven projekt.
 
 ==== Inštalácia m2e pluginu
 
-Ak už nemáte plugin m2e nainštalovaný, najjednoduchší spôsob jeho inštalácie je nainštalovanie link:http://jboss.org/tools[JBoss nástrojov]  (JBoss Tools). Zopakujte tieto kroky pre inštaláciu JBoss Tools z Eclipse Marketplace (niečo ako app store pre Eclipse).
+Ak už nemáte plugin m2e nainštalovaný, najjednoduchší spôsob jeho inštalácie je nainštalovanie https://jboss.org/tools[JBoss nástrojov]  (JBoss Tools). Zopakujte tieto kroky pre inštaláciu JBoss Tools z Eclipse Marketplace (niečo ako app store pre Eclipse).
 
 # Vyberte `Help > Eclipse Marketplace...` z hlavného menu
 # Zadajte "jboss tools" (bez úvodzoviek) do Find poľa a stlačte Enter
@@ -422,7 +422,7 @@ Artefakt pre integráciu Arquillianu s JUnit taktiež pridá Arquillian Core a S
 Ak chcete používať TestNG namiesto JUnit, nahraďte Arquillian JUnit integráciu s Arquillian TestNG integráciou.
 ====
 
-Odporúčame aktualizovanie Maven Surefire Pluginu z prednastavenej verzie, pre dôvody popísané link:https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild.[v tomto FAQ] Môžete nastaviť verziu Surefire pluginu pripísaním `<plugin>` elementu do `<plugins>` elementu, rovno pod Maven Compiler Plugin:
+Odporúčame aktualizovanie Maven Surefire Pluginu z prednastavenej verzie, pre dôvody popísané https://community.jboss.org/wiki/WhatVersionOfSurefireShouldIUseToRunMyArquillianTestsInAMavenBuild.[v tomto FAQ] Môžete nastaviť verziu Surefire pluginu pripísaním `<plugin>` elementu do `<plugins>` elementu, rovno pod Maven Compiler Plugin:
 
 [source]
 ----
@@ -435,7 +435,7 @@ Odporúčame aktualizovanie Maven Surefire Pluginu z prednastavenej verzie, pre 
 </plugin>
 <!-- clip -->
 ----
-Ak máte v tejto chvíli problémy nastaviť pom.xml, môžete si stiahnuť súbor link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] z link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[ukážkového projektu] a premenovať ho na pom.xml.
+Ak máte v tejto chvíli problémy nastaviť pom.xml, môžete si stiahnuť súbor https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom-no-container-profiles.xml[pom-no-container-profiles.xml] z https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial[ukážkového projektu] a premenovať ho na pom.xml.
 
 V tejto chvíli máte všetko nastavené a môžete napísať svoj prvý Arquillian test!
 
@@ -481,7 +481,7 @@ Teraz si popíšeme, z čoho pozostáva Arquillian test a ako sa líši od bežn
 
 ==== Čo je testovací archív?
 
-Účel testovacieho archívu je izolovanie tried a zdrojov ktoré sú potrebné pre test od zvyšku classpath. Narozdiel od normálneho jednotkového testu, Arquillian jednoducho nepoužije všetko, čo je na classpath. Namiesto toho zahrnie len to, čo samotný test potrebuje (čo môže byť celá classpath, ak sa tak rozhodnete). Archív je vytvorený pomocou nástroja link:http://jboss.org/shrinkwrap.[ShrinkWrap] ShrinkWrap je Java API pre vytvorenie archívov (napr. jar, war, ear) priamo v Jave. Táto "micro-deployment" stratégia vám dovolí zamerať sa presne len na triedy, ktoré chcete otestovať. Výsledkom je test, ktorý je veľmi prehladný a ľahko sa rozširuje či ovláda.
+Účel testovacieho archívu je izolovanie tried a zdrojov ktoré sú potrebné pre test od zvyšku classpath. Narozdiel od normálneho jednotkového testu, Arquillian jednoducho nepoužije všetko, čo je na classpath. Namiesto toho zahrnie len to, čo samotný test potrebuje (čo môže byť celá classpath, ak sa tak rozhodnete). Archív je vytvorený pomocou nástroja https://jboss.org/shrinkwrap.[ShrinkWrap] ShrinkWrap je Java API pre vytvorenie archívov (napr. jar, war, ear) priamo v Jave. Táto "micro-deployment" stratégia vám dovolí zamerať sa presne len na triedy, ktoré chcete otestovať. Výsledkom je test, ktorý je veľmi prehladný a ľahko sa rozširuje či ovláda.
 
 Po nahratí ShrinkWrap archívu na server sa zmení testovací archív na archív reálny. Kontajner nemá potuchy o tom, že archív bol vytvorení nástrojom ShrinkWrap. Na ShrinkWrap sa môžete pozerať ako na Java nástroj s jednou výnimkou. V ideálnom prípade uloží archív na server a nie do archívu na disk. Základ však zostáva nezmenený. ShrinkWrap vytvorí regulérny archív.
 
@@ -675,7 +675,7 @@ Po spustení testu by ste mali v konzole vidieť nasledujúce riadky:
 21 [main] INFO org.jboss.weld.Version - WELD-000900 1.1.5 (Final)
 Hello, Earthling!
 ----
-Po jeho skončení by ste mali vidieť ako JUnit označil vykonaný test *(greenbar)zeleným pruhom*!
+Po jeho skončení by ste mali vidieť ako JUnit označil vykonaný test [.greenbar]*zeleným pruhom*!
 
 image::/images/guides/arquillian_tutorial_junit_green_bar.png[]
 
@@ -697,7 +697,7 @@ Running org.arquillian.example.GreeterTest
 Hello, Earthling!
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.907 sec
 ----
-*Gratulujeme!* Práve ste dosiahli svoj prvý *(greenbar)zelený pruh* s Arquillianom!
+*Gratulujeme!* Práve ste dosiahli svoj prvý [.greenbar]*zelený pruh* s Arquillianom!
 
 === Pozrime sa bližšie
 
@@ -773,7 +773,7 @@ Posledný krok - pretože sme vytvorili novú triedu, musíme sa uistiť, že je
 ----
 .addClasses(Greeter.class, PhraseBuilder.class)
 ----
-Spustite testy znova. Mali by ste vidieť ďalší *(greenbar)zelený pruh*! Celkom dobré, nie? ~:)
+Spustite testy znova. Mali by ste vidieť ďalší [.greenbar]*zelený pruh*! Celkom dobré, nie? ~:)
 
 === Ladenie testu
 
@@ -904,7 +904,7 @@ Otvorte `pom.xml` a vytvorte nový profil pre Weld EE embedded kontajner vložen
 Java EE API závislosť bola presunutá do profilu pretože niektoré kontajnery, ako napríklad Embedded GlassFish, už v sebe obsahujú tieto knižnice. Obe knižnice na classpath môžu spôsobiť problémy, preto musíme hrať tieto classpath hry ...
 ====
 
-Teraz vložíme do `pom.xml` dva ďalšie profily do `<profiles>` elementu. Jeden pre link:http://embedded-glassfish.java.net:[Embedded GlassFish]
+Teraz vložíme do `pom.xml` dva ďalšie profily do `<profiles>` elementu. Jeden pre https://embedded-glassfish.java.net:[Embedded GlassFish]
 
 [source]
 ----
@@ -969,13 +969,13 @@ a druhý pre JBoss AS managed:
 
 Teraz máte na výber tri kontajneri, v ktorých môžete spustiť testy.
 
-Ak máte problémy so súborom `pom.xml` a neviete aká má byť jeho presná podoba, môžete si stiahnuť tento link:https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] z link:https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial.[ukážkového projektu]
+Ak máte problémy so súborom `pom.xml` a neviete aká má byť jeho presná podoba, môžete si stiahnuť tento https://raw.github.com/arquillian/arquillian-examples/master/arquillian-tutorial/pom.xml[pom.xml] z https://github.com/arquillian/arquillian-examples/tree/master/arquillian-tutorial.[ukážkového projektu]
 
 === Testovanie na rôznych kontajneroch
 
 Po definovaní profilov zistíte, že váš projekt resp. testy sa nedajú spustiť. Nemáte totiž aktivovaný žiadny profil. Musíte aktivovať jeden z kontajnerových profilov. Aktivujme Weld EE embedded profil, aby sme boli opäť schopný spúšťať testy.
 
-Existujú dve možnosti ako aktivovať v Eclipse profil (predpokladáme, že používate link:http://www.eclipse.org/m2e):[m2e plugin]
+Existujú dve možnosti ako aktivovať v Eclipse profil (predpokladáme, že používate https://www.eclipse.org/m2e):[m2e plugin]
 
 # Manuálna konfigurácia (štandardný spôsob)
 # Tzv. Maven profile selector (súčasť JBoss Tools)
@@ -1036,7 +1036,7 @@ Už viete, ako funguje testovanie s Weld EE Embedded kontajnerom. Poďme použi�
 Ak nastavíte Weld EE Embedded profil ako východzí a chcete použiť iný, musíte ho explicitne deaktivovať. Profil môžete deaktivovať v cez Maven Profile selector kliknutím pravým tlačidlom myši na profil a kliknutím na Deactivate z kontextového menu. Pred meno profilu sa pridá výkričník (napr. @!arquillian-weld-ee-embedded@). Viacnásobný výber alebo deaktivácia profilov je oddelená čiarkami.
 ====
 
-Spustite znova vaše testy. V konzole by ste mali vidieť štart GlassFish servera... a ďalší *(greenbar)zelený pruh*!
+Spustite znova vaše testy. V konzole by ste mali vidieť štart GlassFish servera... a ďalší [.greenbar]*zelený pruh*!
 
 Práve ste spustili rovnaký test na dvoch rôznych vstavaných kontajneroch, CDI kontajner (Weld) a Java EE kontajner (GlassFish). Aby sme si boli naozaj istí, že naša komponenta pracuje správne v produkčnom prostredí, potrebujeme použiť samostatný kontajner. Poďme pre tento účel použiť JBoss AS.
 
@@ -1047,11 +1047,11 @@ Aby ste mohli spustiť testy na samostatnej inštancíi JBoss AS, musíte ho naj
 
 Zopakujte tieto kroky pre inštaláciu JBoss AS 7 mimo prostredia projektu:
 
-# link:http://jboss.org/jbossas/downloads[Stiahnite JBoss AS 7] (uistite sa, že verzia, ktorú sťahujete, sa zhoduje s verziou `jboss-as-arquillian-container-managed` závislosti vo vašom `pom.xml`)
+# https://jboss.org/jbossas/downloads[Stiahnite JBoss AS 7] (uistite sa, že verzia, ktorú sťahujete, sa zhoduje s verziou `jboss-as-arquillian-container-managed` závislosti vo vašom `pom.xml`)
 # Rozbaľte archív
 # (dobrovoľné) Nastavte `JBOSS_HOME` premennú prostredia ako cestu k rozbalenému adresáru
 
-Ak máte JBoss AS nainštalovaný (teda rozbalený) a vaša `JBOSS_HOME` premenná je nastavená na tento adresár, môžete aktivovať `arquillian-jbossas-managed` profil a spustiť testy. Mali by ste v konzole vidieť štart JBoss AS... a ďalší *(greenbar)zelený pruh!*
+Ak máte JBoss AS nainštalovaný (teda rozbalený) a vaša `JBOSS_HOME` premenná je nastavená na tento adresár, môžete aktivovať `arquillian-jbossas-managed` profil a spustiť testy. Mali by ste v konzole vidieť štart JBoss AS... a ďalší [.greenbar]*zelený pruh!*
 
 [NOTE]
 ====
@@ -1101,11 +1101,11 @@ Na to, aby ste začali používať menežovaný JBoss AS 7 server stiahnutý Mav
 ----
 [source]
 ----
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="https://jboss.org/schema/arquillian"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://jboss.org/schema/arquillian
-        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+        https://jboss.org/schema/arquillian
+        https://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="jbossas-managed" default="true">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
@@ -1113,7 +1113,7 @@ Na to, aby ste začali používať menežovaný JBoss AS 7 server stiahnutý Mav
     </container>
 </arquillian>
 ----
-Teraz zmeňte aktívny Maven profil na `arquillian-jbossas-managed` a znova spustite testy. V konzole by ste mali vidieť štart JBoss AS ... a na konci ďalší *(greenbar)zelený pruh*!
+Teraz zmeňte aktívny Maven profil na `arquillian-jbossas-managed` a znova spustite testy. V konzole by ste mali vidieť štart JBoss AS ... a na konci ďalší [.greenbar]*zelený pruh*!
 
 Tento test je _rovnaký_, no teraz beží v plnohodnotnom Java EE kontajneri. Arquillian zabalí test, nahrá ho do kontajnera ako Java EE archív, vzdialene spustí testy, odchytí výsledky a vráti ich naspäť do JUnit v Eclipse, kde môžete vidieť výsledky (alebo ich môžete vidieť v Maven surefire výsledkoch).
 

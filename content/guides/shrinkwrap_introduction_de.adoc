@@ -79,11 +79,11 @@ Via Maven werden diese unter dem geeigneten Scope mithilfe der ShrinkWrap Depend
 ----
 [source]
 ----
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="
-  http://maven.apache.org/POM/4.0.0
-  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  https://maven.apache.org/POM/4.0.0
+  https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- snip -->
 ----
   <dependency>
@@ -107,11 +107,11 @@ ShrinkWrap kann auf jeder Java 5 basierten Laufzeit ausgeführt werden. Zum Komp
 
 ==== API Dokumentation
 
-Die JavaDoc für jedes Release befindet sich auf link:http://docs.jboss.org/shrinkwrap[docs.jboss.org] .
+Die JavaDoc für jedes Release befindet sich auf https://docs.jboss.org/shrinkwrap[docs.jboss.org] .
 
 ==== Open Source Entwicklung
 
-Fork uns auf link:http://github.com/shrinkwrap/shrinkwrap[github] und helfe bei der Entwicklung!
+Fork uns auf https://github.com/shrinkwrap/shrinkwrap[github] und helfe bei der Entwicklung!
 
 === Archive Erstellen
 
