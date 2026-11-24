@@ -48,22 +48,6 @@ public final class GitHubClient {
         return List.copyOf(result);
     }
 
-    /** Fetches and maps a GitHub contributor collection response. */
-    public List<Contributor> contributors(URI endpoint, CachePolicy policy) throws IOException, InterruptedException {
-        JsonNode values = mapper.readTree(http.fetch(endpoint, policy, headers).entry().body());
-        List<Contributor> result = new ArrayList<>();
-        values.forEach(value -> result.add(new Contributor(text(value, "login"), integer(value, "contributions"),
-                text(value, "html_url"))));
-        return List.copyOf(result);
-    }
-
-    /** Fetches and maps one GitHub user response. */
-    public User user(URI endpoint, CachePolicy policy) throws IOException, InterruptedException {
-        JsonNode value = mapper.readTree(http.fetch(endpoint, policy, headers).entry().body());
-        return new User(text(value, "login"), text(value, "name"), text(value, "company"), text(value, "location"),
-                text(value, "bio"), text(value, "blog"), text(value, "html_url"), text(value, "avatar_url"));
-    }
-
     /** Fetches and maps closed GitHub milestones used as release identifiers. */
     public List<Milestone> milestones(URI endpoint, CachePolicy policy) throws IOException, InterruptedException {
         JsonNode values = mapper.readTree(http.fetch(endpoint, policy, headers).entry().body());
@@ -88,14 +72,6 @@ public final class GitHubClient {
         List<Issue> result = new ArrayList<>();
         values.forEach(value -> result.add(new Issue(integer(value, "number"), text(value, "title"), text(value, "html_url"),
                 text(value.path("user"), "login"), labels(value.path("labels")))));
-        return List.copyOf(result);
-    }
-
-    /** Fetches and maps GitHub team members. */
-    public List<TeamMember> teamMembers(URI endpoint, CachePolicy policy) throws IOException, InterruptedException {
-        JsonNode values = mapper.readTree(http.fetch(endpoint, policy, headers).entry().body());
-        List<TeamMember> result = new ArrayList<>();
-        values.forEach(value -> result.add(new TeamMember(text(value, "login"), text(value, "html_url"))));
         return List.copyOf(result);
     }
 
@@ -142,15 +118,6 @@ public final class GitHubClient {
             String cloneUrl, String commitsUrl) {
     }
 
-    /** Describes a GitHub contributor. */
-    public record Contributor(String login, int contributions, String htmlUrl) {
-    }
-
-    /** Describes the profile fields used by identity enrichment. */
-    public record User(String login, String name, String company, String location, String bio, String blog,
-            String htmlUrl, String avatarUrl) {
-    }
-
     /** Describes a GitHub milestone used as a release source. */
     public record Milestone(int number, String title, String description, String htmlUrl) {
     }
@@ -163,7 +130,4 @@ public final class GitHubClient {
     public record Issue(int number, String title, String htmlUrl, String author, List<String> labels) {
     }
 
-    /** Describes a GitHub team member. */
-    public record TeamMember(String login, String htmlUrl) {
-    }
 }

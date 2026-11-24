@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.arquillian.website.roq.GeneratedModels.IdentityPage;
 import org.arquillian.website.roq.GeneratedModels.ModulePage;
 import org.arquillian.website.roq.GeneratedModels.ReleasePage;
 import org.arquillian.website.roq.GeneratedModels.SiteData;
@@ -65,10 +64,8 @@ public final class GeneratedDataExtension {
     static SiteData fixture() {
         return new SiteData(
                 java.util.List.of(new ModulePage("fixture-module", "Fixture Module", "Fixture description", "arquillian",
-                        "/modules/fixture-module/", java.util.List.of(), java.util.List.of(), java.util.List.of())),
+                        "/modules/fixture-module/", java.util.List.of(), java.util.List.of())),
                 java.util.List.of(new ReleasePage("fixture-release", "Fixture Release", "1.0.0.Final", "Fixture", "2026-01-01",
-                        "/blog/2026/01/01/fixture-release/", true, java.util.List.of(), java.util.List.of())),
-                java.util.List.of(new IdentityPage("fixture-user", "Fixture User", "Contributor", "",
-                        "/community/fixture-user/", "", "", "", false, true, false, false, java.util.List.of())));
+                        "/blog/2026/01/01/fixture-release/", true, java.util.List.of())));
     }
 }

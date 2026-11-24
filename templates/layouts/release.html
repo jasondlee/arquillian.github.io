@@ -14,10 +14,6 @@
         <h3>Release notes and resolved issues</h3>
         <ul>{#for note in generated.model.releaseNotes}<li><a href="{=note.url}">#{=note.number} {=note.title}</a></li>{/for}</ul>
         {/if}
-        {#if generated.model.contributors}
-        <p>Thanks to the following contributors:</p>
-        <ul>{#for contributor in generated.model.contributors}<li>{=contributor.name}</li>{/for}</ul>
-        {/if}
     </div>
 </main>
 {/fragment}

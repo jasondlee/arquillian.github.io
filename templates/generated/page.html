@@ -10,20 +10,11 @@
         {#if generated.kind == 'module'}
         <p>{=generated.model.description}</p>
         <p class="module-owner">Maintained by {=generated.model.owner}.</p>
-        {#if generated.model.contributors}
-        <h2>Contributors</h2>
-        <ul>{#for contributor in generated.model.contributors}<li>{=contributor.name}</li>{/for}</ul>
-        {/if}
         {#else if generated.kind == 'release'}
         <p>{=generated.model.component} {=generated.model.version} was released on {=generated.model.date}.</p>
         {#if generated.model.releaseNotes}
         <h2>Release notes</h2>
         <ul>{#for note in generated.model.releaseNotes}<li><a href="{=note.url}">#{=note.number} {=note.title}</a></li>{/for}</ul>
-        {/if}
-        {#else if generated.kind == 'identity'}
-        <p class="identity-role">{=generated.model.role}</p>
-        {#if generated.model.avatarUrl}
-        <img src="{=generated.model.avatarUrl}" alt="{=generated.model.name}">
         {/if}
         {#else if generated.kind == 'index'}
         <ul>{#for record in generated.model}<li>{=record.title ?: record.name}</li>{/for}</ul>

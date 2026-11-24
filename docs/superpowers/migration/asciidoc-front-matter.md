@@ -9,14 +9,14 @@ Roq content uses a YAML front-matter block delimited by `---` at the beginning o
 | `layout` | yes | Qute layout name, such as `page`, `post`, `guide`, or `release`. |
 | `title` | yes | Human-readable page title. |
 | `description` | no | Page description used for metadata and summaries. |
-| `author` | no | Stable identity key used by the identity provider. |
+| `author` | no | Stable identity key looked up in the committed identity snapshot. |
 | `date` | no | ISO date (`YYYY-MM-DD`) for posts and release notes. |
 | `tags` | no | YAML list of stable tag names. |
 | `link` | no | Explicit generated URL when Roq’s default route differs from production. |
 | `aliases` | no | Roq aliases-plugin paths that should redirect to this page. |
 | `redirect_from` | no | Roq aliases-plugin redirect paths for legacy URLs. |
 
-Unknown provider-specific attributes are allowed, but they must be documented with the page family that consumes them. Generated provider data belongs outside tracked `data/`; only deliberate fallback records belong under `data/curated/`.
+Unknown provider-specific attributes are allowed, but they must be documented with the page family that consumes them. Generated provider data belongs outside tracked `data/`; deliberate static identity data belongs in `data/identities.json` and other fallback records belong under `data/curated/`.
 
 ## Route rules
 

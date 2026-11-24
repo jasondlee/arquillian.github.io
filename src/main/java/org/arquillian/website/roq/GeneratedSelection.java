@@ -8,7 +8,8 @@ import jakarta.inject.Singleton;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.arquillian.website.roq.GeneratedModels.IdentityPage;
+import org.arquillian.website.data.model.IdentityData;
+import org.arquillian.website.data.model.IdentityData.Identity;
 import org.arquillian.website.roq.GeneratedModels.ModulePage;
 import org.arquillian.website.roq.GeneratedModels.ReleasePage;
 import org.arquillian.website.roq.GeneratedModels.SiteData;
@@ -17,11 +18,13 @@ import org.arquillian.website.roq.GeneratedModels.SiteData;
 public final class GeneratedSelection {
 
     private final GeneratedDataExtension data;
+    private final IdentityData identities;
 
     /** Creates a selection producer backed by the normalized generated-data loader. */
     @Inject
-    public GeneratedSelection(GeneratedDataExtension data) {
+    public GeneratedSelection(GeneratedDataExtension data, IdentityData identities) {
         this.data = data;
+        this.identities = identities;
     }
 
     /** Produces the concrete generated URLs that Roq must request during batch generation. */
@@ -32,12 +35,11 @@ public final class GeneratedSelection {
             SiteData generated = data.load();
             List<SelectedPath> paths = new ArrayList<>();
             paths.add(select("/modules/"));
-            paths.add(selectPretty("/community/contributors"));
             generated.modules().stream().map(ModulePage::url).map(GeneratedSelection::select)
                     .forEach(paths::add);
             generated.releases().stream().map(ReleasePage::url).map(GeneratedSelection::select)
                     .forEach(paths::add);
-            generated.identities().stream().map(IdentityPage::url).map(GeneratedSelection::selectPretty)
+            identities.identities().stream().map(Identity::url).distinct().map(GeneratedSelection::selectPretty)
                     .forEach(paths::add);
             return new RoqSelection(List.copyOf(paths));
         } catch (IOException exception) {

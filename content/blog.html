@@ -40,7 +40,6 @@ paginate:
         <h3>Release notes and resolved issues</h3>
         <ul>{#for note in post.releaseNotes}<li><a href="{=note.url}">#{=note.number} {=note.title}</a></li>{/for}</ul>
         {/if}
-        {#if post.contributors}<p>Thanks to the following list of contributors: {#for contributor in post.contributors}{#if contributor_index > 0}, {/if}<a href="{=contributor.url}">{=contributor.name}</a>{/for}</p>{/if}
         {#else}
         <p>{=post.summary}</p>
         {/if}

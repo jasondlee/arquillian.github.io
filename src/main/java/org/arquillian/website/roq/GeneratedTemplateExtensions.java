@@ -3,7 +3,6 @@ package org.arquillian.website.roq;
 import io.quarkus.qute.TemplateExtension;
 import java.io.IOException;
 import java.util.List;
-import org.arquillian.website.roq.GeneratedModels.IdentityPage;
 import org.arquillian.website.roq.GeneratedModels.ModulePage;
 import org.arquillian.website.roq.GeneratedModels.NewsItem;
 
@@ -12,15 +11,6 @@ import org.arquillian.website.roq.GeneratedModels.NewsItem;
 public final class GeneratedTemplateExtensions {
 
     private GeneratedTemplateExtensions() {
-    }
-
-    /** Returns generated contributor records for the homepage spotlight. */
-    public static List<IdentityPage> contributors() {
-        try {
-            return new GeneratedDataExtension().load().identities();
-        } catch (IOException exception) {
-            throw new IllegalStateException("Unable to load generated homepage data", exception);
-        }
     }
 
     /** Returns generated module records for the documentation index. */

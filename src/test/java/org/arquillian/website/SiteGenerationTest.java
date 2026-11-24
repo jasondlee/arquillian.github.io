@@ -6,11 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 
 import io.quarkiverse.roq.testing.RoqAndRoll;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import jakarta.inject.Inject;
+import org.arquillian.website.data.model.IdentityData;
 import org.arquillian.website.data.model.SiteData;
 import org.arquillian.website.roq.GeneratedDataExtension;
 import org.arquillian.website.roq.GeneratedSelection;
@@ -27,6 +29,9 @@ class SiteGenerationTest {
 
     @Inject
     GeneratedSelection generatedSelection;
+
+    @Inject
+    IdentityData identities;
 
     @TempDir
     Path stagingDirectory;
@@ -54,9 +59,23 @@ class SiteGenerationTest {
         assertTrue(generatedSelection.pages().paths().stream()
                 .anyMatch(path -> path.outputPath().equals("modules/arquillian-core/index.html")));
         assertTrue(generatedSelection.pages().paths().stream()
-                .anyMatch(path -> path.outputPath().equals("community/contributors/index.html")));
-        assertTrue(generatedSelection.pages().paths().stream()
                 .anyMatch(path -> path.outputPath().equals("community/aslakknutsen/index.html")));
+    }
+
+    /** Confirms the static identity snapshot includes the historical project mappings. */
+    @Test
+    void loadsHistoricalIdentitySnapshot() throws Exception {
+        assertTrue(Files.exists(Path.of("data/identities.json")));
+        assertTrue(Files.exists(Path.of("content/community/contributors.adoc")));
+        assertEquals(358, identities.identities().size());
+        Comparator<String> byLastName = Comparator.comparing((String name) -> {
+            String trimmed = name.trim();
+            return trimmed.substring(trimmed.lastIndexOf(' ') + 1);
+        }).thenComparing((String name) -> name);
+        assertEquals(identities.identities().stream().map(identity -> identity.name()).sorted(byLastName).toList(),
+                identities.identities().stream().map(identity -> identity.name()).toList());
+        assertTrue(identities.identities().stream()
+                .anyMatch(identity -> identity.githubId().equals("spriadka")));
     }
 
     /** Confirms normalized provider output is staged outside tracked data directories. */
@@ -81,6 +100,37 @@ class SiteGenerationTest {
                 .asString().contains("1.0.0.Final"));
         assertTrue(RestAssured.get("/community/aslakknutsen").then().statusCode(200).extract().asString()
                 .contains("Aslak Knutsen"));
+    }
+
+    /** Confirms the contributors route renders the production card-grid structure. */
+    @Test
+    void rendersContributorsPage() {
+        RestAssured.port = 8082;
+        String body = RestAssured.get("/community/contributors/").then().statusCode(200).extract().asString();
+        assertTrue(body.contains("class=\"contributors\""));
+        assertTrue(body.contains("data-bs-toggle=\"modal\""));
+        assertTrue(body.contains("data-bs-dismiss=\"modal\""));
+        assertTrue(body.contains("<h3 data-bs-toggle=\"modal\" data-bs-target=\"#alrubinger\" role=\"button\" tabindex=\"0\">Andrew Lee Rubinger</h3>"));
+        assertTrue(body.contains("Hantsy Bai"));
+        assertTrue(body.contains("Contributors"));
+        assertTrue(body.contains(">Blog</a>"));
+        assertTrue(body.contains(">Twitter</a>"));
+        assertTrue(body.contains(">GitHub</a>"));
+    }
+
+    /** Confirms the legacy site scripts receive the jQuery runtime before execution. */
+    @Test
+    void initializesJQueryForLegacySiteScripts() throws Exception {
+        String jqueryBootstrap = Files.readString(Path.of("web/00-jquery.js"));
+        assertTrue(jqueryBootstrap.contains("window.jQuery"));
+    }
+
+    /** Confirms the homepage contributor spotlight renders the static identity mapping. */
+    @Test
+    void rendersContributorSpotlight() {
+        RestAssured.port = 8082;
+        String body = RestAssured.get("/").then().statusCode(200).extract().asString();
+        assertTrue(body.contains("Aslak Knutsen"), body);
     }
 
 }

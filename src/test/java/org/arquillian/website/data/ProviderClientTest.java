@@ -11,13 +11,10 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;
 import org.arquillian.website.data.github.GitHubClient;
-import org.arquillian.website.data.identity.IdentityProvider;
-import org.arquillian.website.data.identity.IdentityRecord;
 import org.arquillian.website.data.jira.JiraClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -95,18 +92,6 @@ class ProviderClientTest {
             assertEquals("ARQ", project.key());
             assertTrue(project.versions().getFirst().released());
         }
-    }
-
-    /** Confirms manual identity YAML remains available without provider credentials. */
-    @Test
-    void loadsManualIdentityFixture() throws Exception {
-        Path mapping = cacheDirectory.resolve("identities.yml");
-        Files.writeString(mapping, "- github_id: aslakknutsen\n  role: Project Lead\n");
-
-        IdentityRecord identity = new IdentityProvider().load(mapping).getFirst();
-
-        assertEquals("aslakknutsen", identity.githubId());
-        assertEquals("Project Lead", identity.role());
     }
 
     /** Creates a normal cached client for provider fixture requests. */

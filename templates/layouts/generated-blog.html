@@ -34,7 +34,6 @@
                     <h3>Release notes and resolved issues {=generated.model.releaseNotes.size}</h3>
                     <dl><dt>{=generated.model.releaseNoteCategory}</dt><dd><ul>{#for note in generated.model.releaseNotes}<li><a href="{=note.url}">#{=note.number} {=note.title}</a></li>{/for}</ul></dd></dl>
                     {/if}
-                    {#if generated.model.contributors}<p>Thanks to the following list of contributors: {#for contributor in generated.model.contributors}{#if contributor_index > 0}, {/if}<a href="{=contributor.url}">{=contributor.name}</a>{/for}</p>{/if}
                 </div>
                 {#if generated.model.tags}
                 <ul class="tags">

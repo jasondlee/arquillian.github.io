@@ -1,0 +1,38 @@
+{#include roq-templates/layouts/base}
+{#fragment RoqPageContent}
+<main id="main" role="main">
+    <section id="content-header"><div class="container"><h1>Contributors</h1></div></section>
+    <div class="container">
+        <div id="content">
+        <ul class="contributors">
+            {#for contributor in cdi:identities.identities}
+            <li>
+                <div class="modal fade" id="{=contributor.githubId}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog"><div class="modal-content">
+                    <div class="modal-header"><h3 class="modal-title">{=contributor.name}{#if contributor.location} <small>{=contributor.location}</small>{/if}</h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body clearfix">
+                        <img class="thumbnail" src="{#if contributor.avatarUrl}{=contributor.avatarUrl}{#else}/images/arquillian-icon-s.png{/if}" height="60" width="60" alt="{=contributor.name}" style="float: left; margin: 2px 10px 3px 0;">
+                        {#if contributor.bio}{=contributor.bio}{#else}No bio available.{/if}
+                    </div>
+                    </div></div>
+                </div>
+                <div class="photo">
+                    <img src="{#if contributor.avatarUrl}{=contributor.avatarUrl}{#else}/images/arquillian-icon-s.png{/if}" height="140" width="140" alt="{=contributor.name}" data-bs-toggle="modal" data-bs-target="#{=contributor.githubId}">
+                    <ul>
+                        <li>{#if contributor.blogUrl}<a href="{=contributor.blogUrl}">Blog</a>{#else}<span>Blog</span>{/if}</li>
+                        <li>{#if contributor.twitterUrl}<a href="{=contributor.twitterUrl}">Twitter</a>{#else}<span>Twitter</span>{/if}</li>
+                        <li><a href="https://github.com/{=contributor.githubId}">GitHub</a></li>
+                    </ul>
+                </div>
+                <h3 data-bs-toggle="modal" data-bs-target="#{=contributor.githubId}" role="button" tabindex="0">{=contributor.name}</h3>
+                {#if contributor.company}<strong>{=contributor.company}</strong>{/if}
+                {#if contributor.location}<em>{=contributor.location}</em>{/if}
+            </li>
+            {/for}
+        </ul>
+        <p><strong>Is your information incomplete?</strong> Contributor information is maintained in the site's static identity data.</p>
+        </div>
+    </div>
+</main>
+{/fragment}
+{/include}

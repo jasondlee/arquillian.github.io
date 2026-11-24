@@ -1,3 +1,28 @@
+import 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
+
+/**
+ * Opens contributor modals from image and name triggers when the Bootstrap data API is unavailable.
+ */
+function activateContributorModals() {
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const selector = trigger.getAttribute('data-bs-target');
+            const modal = selector ? document.querySelector(selector) : null;
+            if (modal) {
+                Modal.getOrCreateInstance(modal).show();
+            }
+        });
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', activateContributorModals);
+} else {
+    activateContributorModals();
+}
+
 /**
  * Pushes the footer to the bottom of the page if the page is shorter than the
  * height of the browser window.

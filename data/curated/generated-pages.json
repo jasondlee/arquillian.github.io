@@ -97,30 +97,6 @@
       "url": "/blog/2018/06/06/arquillian-extension-byteman-1-0-0/"
     }
   ],
-  "identities": [
-    {
-      "githubId": "aslakknutsen",
-      "name": "Aslak Knutsen",
-      "role": "Project Lead",
-      "avatarUrl": "",
-      "url": "/community/aslakknutsen"
-    },
-    {
-      "githubId": "hantsy",
-      "name": "Hantsy Bai",
-      "role": "Contributor",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/854520?s=44",
-      "url": "/community/hantsy",
-      "company": "Self-employed technology consultant",
-      "location": "China",
-      "bio": "Hantsy Bai (@hantsy) is self-employed technology consultant focused on Java EE, Spring and Groovy. He lives in Guangzhou, China. Hantsy contributed many Simplified Chinese translations of the Arquillian guides, helping open the project to a whole new world of developers.",
-      "core": false,
-      "contributor": true,
-      "speaker": false,
-      "translator": true,
-      "repositories": []
-    }
-  ],
   "news": [
     {
       "title": "Arquillian Cube Extension 1.16.0 Released",
@@ -142,10 +118,26 @@
       "artifactPath": "org/arquillian/cube",
       "releaseNoteCategory": "Other",
       "compiledAgainst": [
-        {"name": "Arquillian Core", "version": "1.4.0.Final", "url": "/modules/arquillian-core/"},
-        {"name": "Arquillian Spacelift", "version": "1.0.2", "url": "/modules/spacelift/"},
-        {"name": "ShrinkWrap", "version": "1.2.6", "url": "/modules/shrinkwrap/"},
-        {"name": "ShrinkWrap Resolver", "version": "3.0.1", "url": "/modules/shrinkwrap-resolver/"}
+        {
+          "name": "Arquillian Core",
+          "version": "1.4.0.Final",
+          "url": "/modules/arquillian-core/"
+        },
+        {
+          "name": "Arquillian Spacelift",
+          "version": "1.0.2",
+          "url": "/modules/spacelift/"
+        },
+        {
+          "name": "ShrinkWrap",
+          "version": "1.2.6",
+          "url": "/modules/shrinkwrap/"
+        },
+        {
+          "name": "ShrinkWrap Resolver",
+          "version": "3.0.1",
+          "url": "/modules/shrinkwrap-resolver/"
+        }
       ],
       "artifacts": [
         "arquillian-cube-api",
@@ -177,21 +169,48 @@
         "arquillian-cube-openshift-starter"
       ],
       "releaseNotes": [
-        {"number": 1052, "title": "OpenShiftAssistant : add a scale method with applicationName", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1052"},
-        {"number": 1051, "title": "KubernetesAssistant : improve detection of ready containers in pod", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1051"},
-        {"number": 1048, "title": "java.io.IOException: Failed to upgrade connection when running test against OCP 3.9", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1048"},
-        {"number": 1047, "title": "Make it possible to override namespace per class", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1047"},
-        {"number": 1045, "title": "Cannot use plain text in @OpenShiftResource", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1045"},
-        {"number": 1035, "title": "Update oc to use v3.9.0", "category": "Other", "url": "https://github.com/arquillian/arquillian-cube/issues/1035"}
+        {
+          "number": 1052,
+          "title": "OpenShiftAssistant : add a scale method with applicationName",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1052"
+        },
+        {
+          "number": 1051,
+          "title": "KubernetesAssistant : improve detection of ready containers in pod",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1051"
+        },
+        {
+          "number": 1048,
+          "title": "java.io.IOException: Failed to upgrade connection when running test against OCP 3.9",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1048"
+        },
+        {
+          "number": 1047,
+          "title": "Make it possible to override namespace per class",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1047"
+        },
+        {
+          "number": 1045,
+          "title": "Cannot use plain text in @OpenShiftResource",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1045"
+        },
+        {
+          "number": 1035,
+          "title": "Update oc to use v3.9.0",
+          "category": "Other",
+          "url": "https://github.com/arquillian/arquillian-cube/issues/1035"
+        }
       ],
-      "contributors": [
-        {"name": "Dipak Pawar", "url": "/community/dipak-pawar"},
-        {"name": "Marek Goldmann", "url": "/community/goldmann"},
-        {"name": "Kdaemonv", "url": "/community/kdaemonv"},
-        {"name": "Matous Jobanek", "url": "/community/matousjobanek"},
-        {"name": "Damien Clément D'huart", "url": "/community/dcdh"}
+      "tags": [
+        "release",
+        "extension",
+        "cube"
       ],
-      "tags": ["release", "extension", "cube"],
       "previousUrl": "/blog/2018/06/06/arquillian-extension-byteman-1-0-0/",
       "previousTitle": "Arquillian Extension Byteman 1.0.0 Released",
       "postNumber": 606,
@@ -214,17 +233,25 @@
       "version": "1.0.0",
       "releaseDate": "2018-06-06",
       "compiledAgainst": [
-        {"name": "Arquillian Core", "version": "1.4.0.Final", "url": "/modules/arquillian-core/"},
-        {"name": "Arquillian Container Chameleon", "version": "1.0.0.Beta1", "url": "/modules/chameleon/"}
+        {
+          "name": "Arquillian Core",
+          "version": "1.4.0.Final",
+          "url": "/modules/arquillian-core/"
+        },
+        {
+          "name": "Arquillian Container Chameleon",
+          "version": "1.0.0.Beta1",
+          "url": "/modules/chameleon/"
+        }
       ],
-      "artifacts": ["arquillian-extension-byteman"],
-      "contributors": [
-        {"name": "Bartosz Majsak", "url": "/community/bartoszmajsak"},
-        {"name": "Matous Jobanek", "url": "/community/matousjobanek"},
-        {"name": "Chalda", "url": "/community/chalda"},
-        {"name": "Tamás Baráth", "url": "/community/tamas-b"}
+      "artifacts": [
+        "arquillian-extension-byteman"
       ],
-      "tags": ["release", "extension", "byteman"]
+      "tags": [
+        "release",
+        "extension",
+        "byteman"
+      ]
     },
     {
       "title": "Arquillian Cube Extension 1.15.3 Released",

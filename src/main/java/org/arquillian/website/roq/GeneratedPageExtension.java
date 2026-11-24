@@ -10,7 +10,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import java.util.Map;
-import org.arquillian.website.roq.GeneratedModels.IdentityPage;
+import org.arquillian.website.data.model.IdentityData;
+import org.arquillian.website.data.model.IdentityData.Identity;
 import org.arquillian.website.roq.GeneratedModels.ModulePage;
 import org.arquillian.website.roq.GeneratedModels.NewsItem;
 import org.arquillian.website.roq.GeneratedModels.ReleasePage;
@@ -21,6 +22,7 @@ import org.arquillian.website.roq.GeneratedModels.SiteData;
 public final class GeneratedPageExtension {
 
     private final GeneratedDataExtension data;
+    private final IdentityData identities;
     private final Template page;
     private final Template module;
     private final Template release;
@@ -29,12 +31,14 @@ public final class GeneratedPageExtension {
 
     /** Creates the route extension with the normalized data loader and shared Qute template. */
     @Inject
-    public GeneratedPageExtension(GeneratedDataExtension data, @io.quarkus.qute.Location("generated/page.html") Template page,
+    public GeneratedPageExtension(GeneratedDataExtension data, IdentityData identities,
+            @io.quarkus.qute.Location("generated/page.html") Template page,
             @io.quarkus.qute.Location("roq-templates/layouts/module.html") Template module,
             @io.quarkus.qute.Location("roq-templates/layouts/release.html") Template release,
             @io.quarkus.qute.Location("roq-templates/layouts/identity.html") Template identity,
             @io.quarkus.qute.Location("roq-templates/layouts/generated-blog.html") Template blog) {
         this.data = data;
+        this.identities = identities;
         this.page = page;
         this.module = module;
         this.release = release;
@@ -47,11 +51,10 @@ public final class GeneratedPageExtension {
         try {
             SiteData generated = data.load();
             registerIndex(router, "/modules/", "Modules", generated.modules());
-            registerIndex(router, "/community/contributors", "Contributors", generated.identities());
             generated.modules().forEach(module -> registerModule(router, module));
             generated.news().forEach(news -> registerNews(router, news));
             generated.releases().forEach(release -> registerRelease(router, release));
-            generated.identities().forEach(identity -> registerIdentity(router, identity));
+            identities.identities().forEach(identity -> registerIdentity(router, identity));
         } catch (java.io.IOException exception) {
             throw new IllegalStateException("Unable to load generated Roq page data", exception);
         }
@@ -73,7 +76,7 @@ public final class GeneratedPageExtension {
     }
 
     /** Registers one identity URL while retaining its production path. */
-    private void registerIdentity(Router router, IdentityPage identity) {
+    private void registerIdentity(Router router, Identity identity) {
         registerHtmlRoute(router, identity.url(), context -> render(context, identity.name(), identity.url(), "identity", identity));
     }
 

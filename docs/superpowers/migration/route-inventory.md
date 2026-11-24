@@ -83,7 +83,7 @@ The current generator ownership comes from `_ext/pipeline.rb` and the referenced
 | Output family | Current owner | Inputs/data | Roq port |
 | --- | --- | --- | --- |
 | Module index and module pages | `Awestruct::Extensions::Modules::Page`, `Awestruct::Extensions::Repository`, `_ext/arquillian.rb`, `modules/index.html.haml`, `modules/_module.html.haml` | GitHub repositories, cloned project POMs/Gradle files, tags, commits, contributors | Java repository/model services plus generated Roq pages and Qute module templates |
-| Identity index and identity pages | `Identities::Collect`, `Identities::Crawl`, `Identities::Page`, `Identities::Cache`, `community/_identity.html.haml` | GitHub teams/users, Gravatar, plus Confluence/JBoss Community crawlers whose viability must be probed | Java identity providers, gitignored generated data or deliberate `data/curated/` fallbacks, Qute identity templates; unavailable crawlers are retired rather than silently omitted |
+| Identity index and identity pages | `Identities::Page`, `community/_identity.html.haml` | Committed identity snapshot in `data/identities.json` | Typed `@DataMapping` records and Qute identity templates; project members update identity data manually |
 | Release blog pages | `Releases::Posts`, `_layouts/release.html.haml`, `_layouts/post.html.haml`, `_ext/arquillian.rb` | Repository tags/commits, existing release posts, JIRA/GitHub release notes, contributors | Java release model/page extension, `content/posts/`, Qute release/post layouts |
 | GitHub release notes | `_ext/github.rb` | GitHub milestones and closed issues for configured repositories | Cached Java GitHub client and typed release-note model |
 | JIRA release notes and leads | `_ext/jira.rb` | JIRA project/component/release endpoints and configured project IDs | Cached Java JIRA client and typed release-note/component models |
@@ -130,7 +130,7 @@ No credentials are committed. The Roq build must read credentials from GitHub Ac
 | Data | Current location | Migration note |
 | --- | --- | --- |
 | Awestruct temporary/cache tree | `_tmp/` | Replace with an ignored Roq cache directory persisted by GitHub Actions |
-| Identity cache | `_tmp/datacache/identities.yml` | Normalize into typed Java data/cache records |
+| Identity data | `data/identities.json` | Maintain the static identity snapshot manually; no runtime provider or cache |
 | GitHub REST cache | `_tmp/restcache/github/` | Preserve cache keys and add freshness/conditional-request behavior |
 | JIRA cache | `_tmp/jira/` and documented `_tmp/jira/jira-ARQ.json` | Preserve provider-specific cache invalidation and add force-refresh |
 | Lanyrd HTML cache | `_tmp/lanyrd/` and `_backup/lanyrd/` | Historical evidence only; do not use as a runtime provider fallback or wrap it in Roq pages |

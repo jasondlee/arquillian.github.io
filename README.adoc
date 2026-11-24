@@ -35,8 +35,10 @@ The authored source follows Roq's default directories:
 == Provider data and cache modes
 
 Provider responses, normalized generated data, and repository checkouts must
-remain outside tracked `data/`. The default cache is `.roq-cache`; generated
-provider data is staged below `target/roq-data`. Both locations are ignored.
+remain outside tracked `data/`. The identity snapshot is the exception: it is
+committed at `data/identities.json` and updated manually. The
+default cache is `.roq-cache`; generated provider data is staged below
+`target/roq-data`. Both locations are ignored.
 
 Normal builds use fresh cache entries and conditional revalidation. A stale
 entry may be used when the provider is unavailable and the provider policy

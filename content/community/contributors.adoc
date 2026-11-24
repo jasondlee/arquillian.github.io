@@ -1,0 +1,6 @@
+---
+layout: contributors
+title: Contributors
+link: /community/contributors/
+---
+The contributor directory is maintained from the static identity snapshot.
