@@ -1,0 +1,79 @@
+---
+layout: invasion
+title: Team
+link: /invasion/team/
+---
+
+:qute:
+
+== Simplified integration testing forks from here!
+
+Meet the team leading the invasion and join our innovation effort to make integration testing simple and powerful! We believe innovation spawns from the forks and spreads throughout the community. The project also benefits tremendously from participation by the JBoss Quality Engineering (QE) group at Red Hat.
+
+++++
+<ul class="team">
+{#for username in cdi:team.team}
+{#let identity=identities:find(username)}
+    <li style="width: 29%">
+        <a href="#">
+            <img src="{=identity.avatarUrl}" height="60" width="60" alt="{=identity.name}" data-bs-toggle="modal" data-bs-target="#{=identity.githubId}">
+        </a>
+        <h3>{=identity.name}</h3>
+        <strong>{=identity.role}</strong>
+        <em>{=identity.location}</em>
+    </li>
+{/let}
+{/for}
+    <li>
+        <a href="/community/contributors">
+            <img src="/images/arquillian_noble_60.png" alt="Contributors">
+        </a>
+        <h3>Community</h3>
+        <strong>{=cdi:identities.identities.size} Contributors</strong>
+        <em>Worldwide</em>
+    </li>
+</ul>
+
+{#for username in cdi:team.team}
+{#let identity=identities:find(username)}
+<div class="modal fade" id="{=identity.githubId}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">
+                {=identity.name}{#if identity.location} <small>{=identity.location}</small>{/if}
+            </h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body clearfix">
+            <img class="thumbnail" src="{=identity.avatarUrl}" height="60" width="60" alt="{=identity.name}" style="float: left; margin: 2px 10px 3px 0;"/>
+            {#if identity.bio}
+            <p>{=identity.bio}</p>
+            {#else}
+            <p>No bio available.</p>
+            {/if}
+
+            <h4 style="clear: left">Profiles</h4>
+            <ul>
+                <li>
+                    <a href="https://github.com/{=identity.githubId}">Github</a>
+                </li>
+                {#if identity.blogUrl}
+                <li>
+                    <a href="{=identity.blogUrl}">Blog</a>
+                </li>
+                {/if}
+                {#if identity.twitterUrl}
+                <li>
+                    <a href="{=identity.twitterUrl}">Twitter</a>
+                </li>
+                {/if}
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+{/let}
+{/for}
+
+<p class="rally"><strong>Every contribution matters.<br>Thanks for being part of the team!</strong></p>
+++++

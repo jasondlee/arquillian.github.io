@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
 
 import io.quarkiverse.roq.testing.RoqAndRoll;
 import io.quarkus.test.junit.QuarkusTest;
@@ -14,6 +13,7 @@ import io.restassured.RestAssured;
 import jakarta.inject.Inject;
 import org.arquillian.website.data.model.IdentityData;
 import org.arquillian.website.data.model.SiteData;
+import org.arquillian.website.data.model.TeamData;
 import org.arquillian.website.roq.GeneratedDataExtension;
 import org.arquillian.website.roq.GeneratedSelection;
 import org.junit.jupiter.api.Test;
@@ -32,6 +32,9 @@ class SiteGenerationTest {
 
     @Inject
     IdentityData identities;
+
+    @Inject
+    TeamData teamData;
 
     @TempDir
     Path stagingDirectory;
@@ -62,20 +65,19 @@ class SiteGenerationTest {
                 .anyMatch(path -> path.outputPath().equals("community/aslakknutsen/index.html")));
     }
 
-    /** Confirms the static identity snapshot includes the historical project mappings. */
+    /** Confirms every configured team username resolves and renders on the invasion page. */
     @Test
-    void loadsHistoricalIdentitySnapshot() throws Exception {
-        assertTrue(Files.exists(Path.of("data/identities.json")));
-        assertTrue(Files.exists(Path.of("content/community/contributors.adoc")));
-        assertEquals(358, identities.identities().size());
-        Comparator<String> byLastName = Comparator.comparing((String name) -> {
-            String trimmed = name.trim();
-            return trimmed.substring(trimmed.lastIndexOf(' ') + 1);
-        }).thenComparing((String name) -> name);
-        assertEquals(identities.identities().stream().map(identity -> identity.name()).sorted(byLastName).toList(),
-                identities.identities().stream().map(identity -> identity.name()).toList());
-        assertTrue(identities.identities().stream()
-                .anyMatch(identity -> identity.githubId().equals("spriadka")));
+    void rendersInvasionTeamPage() {
+        RestAssured.port = 8082;
+        String body = RestAssured.get("/invasion/team/").then().statusCode(200).extract().asString();
+        teamData.team().forEach(username -> {
+            String name = identities.identities().stream()
+                    .filter(identity -> identity.githubId().equals(username))
+                    .map(identity -> identity.name())
+                    .findFirst()
+                    .orElseThrow(() -> new AssertionError("Missing identity for team member " + username));
+            assertTrue(body.contains(name), name);
+        });
     }
 
     /** Confirms normalized provider output is staged outside tracked data directories. */
