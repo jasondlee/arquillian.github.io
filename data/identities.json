@@ -323,6 +323,23 @@
     "repositories": []
   },
   {
+    "githubId": "starksm64",
+    "name": "Scott Stark",
+    "role": "",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/332210?v=4",
+    "url": "/community/starksm64",
+    "company": "IBM",
+    "location": "Houston, Tx",
+    "bio": "Developer at IBM, JBoss co-founder",
+    "blogUrl": "",
+    "twitterUrl": "",
+    "core": true,
+    "contributor": true,
+    "speaker": false,
+    "translator": false,
+    "repositories": []
+  },
+  {
     "githubId": "kenfinnigan",
     "name": "Ken Finnigan",
     "role": "",

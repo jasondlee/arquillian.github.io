@@ -3,7 +3,10 @@ layout: invasion
 title: Origins
 link: /invasion/origins/
 ---
-Arquillian originated from the link:http://docs.jboss.org/cdi/tck/reference/1.0.1-Final/html/test-harness.html[JBoss Test Harness], a utility created by Pete Muir as the foundation of the JSR-299 and JSR-303 TCKs. The JBoss Test Harness prototyped a solution that provided:
+
+:qute:
+
+Arquillian originated from the http://docs.jboss.org/cdi/tck/reference/1.0.1-Final/html/test-harness.html[JBoss Test Harness], a utility created by Pete Muir as the foundation of the JSR-299 and JSR-303 TCKs. The JBoss Test Harness prototyped a solution that provided:
   
 * *Declarative, annotation-driven assembly of archives.* ShrinkWrap provides a fluent Java API for assembling JAR, WAR, and EAR archives.
 * *A Java Adapter API.* Container adapters can start and stop a container and deploy a test.
@@ -17,11 +20,11 @@ Arquillian originated from the link:http://docs.jboss.org/cdi/tck/reference/1.0.
   
 Since Pete had hacked on the JBoss Test Harness under pressure to start the CDI TCK, the plan was to take its best ideas and start fresh. In late 2009, Aslak Knutsen began prototyping a new framework inside the Weld codebase called Weld Test. Aslak and Pete combined ideas from JBoss Test Harness and Weld Test with ShrinkWrap, with help from Andrew Rubinger. The result was a portable, pluggable test framework with a new name: Arquillian.
  
-Since then, support has been added for additional containers, test enrichment, and test framework integrations. Arquillian became the foundation of test suites in link:http://sfwk.org/Seam3[Seam 3] modules and examples and was adopted as a replacement for the JBoss Test Harness.
+Since then, support has been added for additional containers, test enrichment, and test framework integrations. Arquillian became the foundation of test suites in http://sfwk.org/Seam3[Seam 3] modules and examples and was adopted as a replacement for the JBoss Test Harness.
 
 == JBoss Testing
 
-Arquillian is part of the link:https://community.jboss.org/groups/testing[JBoss Testing SIG], an effort to unify testing-related projects in the JBoss Community. The initiative is led by the JBoss Testing Guild, Aslak Knutsen, Dan Allen, and Andrew Rubinger.
+Arquillian is part of the https://community.jboss.org/groups/testing[JBoss Testing SIG], an effort to unify testing-related projects in the JBoss Community. The initiative is led by the JBoss Testing Guild, Aslak Knutsen, Dan Allen, and Andrew Rubinger.
 
 == Contributions
 
